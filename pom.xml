@@ -11,6 +11,7 @@
 
     <modules>
         <module>tetragon-resource</module>
+        <module>tetragon-entity</module>
     </modules>
 
     <properties>
