@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonentity.entity;
+package com.yarachkin.tetragon.tetragonmodel.entity;
 
 public class Point {
     private double x;

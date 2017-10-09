@@ -1,16 +1,28 @@
-package com.yarachkin.tetragon.tetragonentity.entity;
+package com.yarachkin.tetragon.tetragonmodel.entity;
+
+import com.yarachkin.tetragon.tetragonutility.idgenerator.IdGenerator;
 
 public class Tetragon {
+    private long id;
     private Point firstPoint;
     private Point secondPoint;
     private Point thirdPoint;
     private Point fourthPoint;
 
     public Tetragon(Point firstPoint, Point secondPoint, Point thirdPoint, Point fourthPoint) {
+        this.id = IdGenerator.generateId();
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
         this.thirdPoint = thirdPoint;
         this.fourthPoint = fourthPoint;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Point getFirstPoint() {
@@ -54,7 +66,10 @@ public class Tetragon {
             return false;
         }
 
-        return false;
+        Tetragon tetragon = (Tetragon) object;
+
+        return (tetragon.getFirstPoint().equals(this.getFirstPoint())) && (tetragon.getSecondPoint().equals(this.getSecondPoint())) &&
+                (tetragon.getThirdPoint().equals(this.getThirdPoint()) && (tetragon.getFourthPoint().equals(this.getFourthPoint())));
     }
 
     @Override
@@ -62,6 +77,7 @@ public class Tetragon {
         int result = 1;
         int prime = 31;
 
+        result = result * prime + (int) id;
         result = result * prime + firstPoint.hashCode();
         result = result * prime + secondPoint.hashCode();
         result = result * prime + thirdPoint.hashCode();
