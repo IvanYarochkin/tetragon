@@ -6,6 +6,7 @@ import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.Strings;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,12 +38,12 @@ public class Cache {
             properties.load(Cache.class.getResourceAsStream(CACHE_PROPERTIES));
 
             cacheFilePath = properties.getProperty(CACHE_FILE_DIRECTORY) + properties.getProperty(CACHE_FILE_NAME);
+
+            createFileIfNotExists();
+            readFromFile();
         } catch (IOException e) {
             throw new CacheException("Unable to open " + CACHE_PROPERTIES, e);
         }
-
-        createFileIfNotExist();
-        readFromFile();
     }
 
     private static class SingletonHelper {
@@ -73,14 +74,14 @@ public class Cache {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(cacheFilePath))));
 
             reader.lines()
-                    .filter(Objects::nonNull)
+                    .filter(Strings::isNotEmpty)
                     .forEach(l -> cache.add(lineToTetragon(l)));
         } catch (FileNotFoundException e) {
             throw new CacheException("File " + cacheFilePath + " not found.", e);
         }
     }
 
-    private void createFileIfNotExist() throws CacheException {
+    private void createFileIfNotExists() throws CacheException {
         try {
             Path cachePath = Paths.get(cacheFilePath);
 
