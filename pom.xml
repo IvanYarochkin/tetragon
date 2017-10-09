@@ -20,6 +20,7 @@
         <log4j.version>2.9.1</log4j.version>
         <tetragon.module.version>1.0-SNAPSHOT</tetragon.module.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <testng.version>6.11</testng.version>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +53,13 @@
                 <groupId>com.yarachkin.tetragon</groupId>
                 <artifactId>tetragon-utility</artifactId>
                 <version>${tetragon.module.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>${testng.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

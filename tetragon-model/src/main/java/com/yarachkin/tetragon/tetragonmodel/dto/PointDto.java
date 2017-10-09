@@ -27,6 +27,6 @@ public class PointDto {
 
     @Override
     public String toString() {
-        return "PointDto{x=" + x + ", y = " + y + "}";
+        return "PointDto{x = " + x + ", y = " + y + "}";
     }
 }
