@@ -7,21 +7,54 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Properties;
 
 public class Cache {
-    private ArrayList<Tetragon> cache;
-    private static final String FILE_PATH = "/tetragons.txt";
+    private static final Logger LOGGER = LogManager.getRootLogger();
 
-    static final Logger LOGGER = LogManager.getRootLogger();
+    private static final String CACHE_PROPERTIES = "/cache.properties";
+    private static final String CACHE_FILE_DIRECTORY = "cache.file.path";
+    private static final String CACHE_FILE_NAME = "cache.file.name";
 
-    private Cache() {
+    private List<Tetragon> cache;
+    private String cacheFilePath;
+
+    private Cache() throws CacheException {
+        try {
+            Properties properties = new Properties();
+            properties.load(Cache.class.getResourceAsStream(CACHE_PROPERTIES));
+
+            cacheFilePath = properties.getProperty(CACHE_FILE_DIRECTORY) + properties.getProperty(CACHE_FILE_NAME);
+        } catch (IOException e) {
+            throw new CacheException("Unable to open " + CACHE_PROPERTIES, e);
+        }
+
+        createFileIfNotExist();
         readFromFile();
     }
 
     private static class SingletonHelper {
-        private static final Cache INSTANCE = new Cache();
+        private static final Cache INSTANCE;
+
+        static {
+            try {
+                INSTANCE = new Cache();
+            } catch (CacheException e) {
+                throw new ExceptionInInitializerError(e);
+            }
+        }
     }
 
     public static Cache getInstance() {
@@ -34,27 +67,34 @@ public class Cache {
         return tempCache;
     }
 
-    private void readFromFile() {
-        cache = new ArrayList<>();
+    private void readFromFile() throws CacheException {
         try {
-            if (Cache.class.getResource(FILE_PATH) == null) {
-                throw new CacheException("Файл не найден.");
-            }
+            cache = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(cacheFilePath))));
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(Cache.class.getResourceAsStream(FILE_PATH)));
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                cache.add(lineToTetragon(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (CacheException e) {
-            LOGGER.log(Level.ERROR, e.getMessage());
+            reader.lines()
+                    .filter(Objects::nonNull)
+                    .forEach(l -> cache.add(lineToTetragon(l)));
+        } catch (FileNotFoundException e) {
+            throw new CacheException("File " + cacheFilePath + " not found.", e);
         }
     }
 
-    private Tetragon lineToTetragon(String line){
+    private void createFileIfNotExist() throws CacheException {
+        try {
+            Path cachePath = Paths.get(cacheFilePath);
+
+            if (Files.notExists(cachePath)) {
+                LOGGER.log(Level.INFO, "File " + cacheFilePath + " does not exists.");
+                Files.createFile(cachePath);
+                LOGGER.log(Level.INFO, "File " + cacheFilePath + " created.");
+            }
+        } catch (IOException e) {
+            throw new CacheException("Unable to create " + cacheFilePath, e);
+        }
+    }
+
+    private Tetragon lineToTetragon(String line) {
         String[] splittedLine = line.split("[ ]");
 
         Point firstPoint = new Point(Double.parseDouble(splittedLine[0]), Double.parseDouble(splittedLine[1]));
