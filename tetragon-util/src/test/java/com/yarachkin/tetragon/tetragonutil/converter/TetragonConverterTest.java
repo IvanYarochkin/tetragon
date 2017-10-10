@@ -1,9 +1,10 @@
-package com.yarachkin.tetragon.tetragonmodel.converter;
+package com.yarachkin.tetragon.tetragonutil.converter;
 
 import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -28,23 +29,23 @@ public class TetragonConverterTest {
         Point thirdPoint = new Point(3.0, 1.0);
         Point fourthPoint = new Point(4.0, 2.0);
 
-        tetragon = new Tetragon(firstPoint, secondPoint, thirdPoint, fourthPoint);
+        tetragon = new Tetragon(1, firstPoint, secondPoint, thirdPoint, fourthPoint);
 
         Point resultFirstPoint = new Point(1.0, 1.0);
         Point resultSecondPoint = new Point(2.0, 2.0);
         Point resultThirdPoint = new Point(3.0, 1.0);
         Point resultFourthPoint = new Point(4.0, 2.0);
 
-        resultTetragon = new Tetragon(resultFirstPoint, resultSecondPoint, resultThirdPoint, resultFourthPoint);
+        resultTetragon = new Tetragon(1, resultFirstPoint, resultSecondPoint, resultThirdPoint, resultFourthPoint);
     }
 
     @Test
-    public void convertWithOneParameterTest() {
+    public void convertWithOneParameterTest() throws UtilException {
         assertEquals(TetragonConverter.convert(tetragonDto), tetragon);
     }
 
     @Test
-    public void convertWithOneParameterAndPointNegativeValuesTest() {
+    public void convertWithOneParameterAndPointNegativeValuesTest() throws UtilException {
         tetragonDto.getFirstPoint().setX("-4.4");
         tetragonDto.getFirstPoint().setY("-6.3");
         tetragon.getFirstPoint().setX(-4.4);
@@ -54,7 +55,7 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertWithOneParameterAndPointZeroValuesTest() {
+    public void convertWithOneParameterAndPointZeroValuesTest() throws UtilException {
         tetragonDto.getFirstPoint().setX("0");
         tetragonDto.getFirstPoint().setY("0");
         tetragonDto.getSecondPoint().setX("0");
@@ -77,14 +78,12 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertNullWithOneParameterTest() {
-        tetragonDto = null;
-
-        assertEquals(TetragonConverter.convert(tetragonDto), null);
+    public void convertNullWithOneParameterTest() throws UtilException {
+        assertEquals(TetragonConverter.convert(null), null);
     }
 
     @Test
-    public void convertWithTwoParametersTest() {
+    public void convertWithTwoParametersTest() throws UtilException {
         tetragonDto.getFirstPoint().setX("22.2");
         tetragonDto.getFirstPoint().setY("33.3");
         resultTetragon.getFirstPoint().setX(22.2);
@@ -93,7 +92,7 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertWithTwoParametersWithNullFirstPointValueTest() {
+    public void convertWithTwoParametersWithNullFirstPointValueTest() throws UtilException {
         tetragonDto.setFirstPoint(null);
         tetragonDto.getSecondPoint().setX("2.5");
         tetragonDto.getSecondPoint().setY("4.5");
@@ -103,7 +102,7 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertWithTwoParametersWithNullSecondPointValueTest() {
+    public void convertWithTwoParametersWithNullSecondPointValueTest() throws UtilException {
         tetragonDto.setSecondPoint(null);
         tetragonDto.getFirstPoint().setX("22.2");
         tetragonDto.getFirstPoint().setY("33.3");
@@ -113,7 +112,7 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertWithTwoParametersWithNullThirdPointValueTest() {
+    public void convertWithTwoParametersWithNullThirdPointValueTest() throws UtilException {
         tetragonDto.setThirdPoint(null);
         tetragonDto.getSecondPoint().setX("7");
         tetragonDto.getSecondPoint().setY("6");
@@ -123,7 +122,7 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertWithTwoParametersWithNullFourthPointValueTest() {
+    public void convertWithTwoParametersWithNullFourthPointValueTest() throws UtilException {
         tetragonDto.setFourthPoint(null);
         tetragonDto.getSecondPoint().setX("4.3");
         tetragonDto.getSecondPoint().setY("4.8");
@@ -133,9 +132,7 @@ public class TetragonConverterTest {
     }
 
     @Test
-    public void convertNullWithTwoParametersTest() {
-        tetragonDto = null;
-        assertEquals(TetragonConverter.convert(tetragon, tetragonDto), null);
+    public void convertNullWithTwoParametersTest() throws UtilException {
+        assertEquals(TetragonConverter.convert(tetragon, null), null);
     }
-
 }

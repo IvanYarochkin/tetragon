@@ -1,7 +1,5 @@
 package com.yarachkin.tetragon.tetragonmodel.entity;
 
-import com.yarachkin.tetragon.tetragonutility.idgenerator.IdGenerator;
-
 public class Tetragon {
     private long id;
     private Point firstPoint;
@@ -9,8 +7,8 @@ public class Tetragon {
     private Point thirdPoint;
     private Point fourthPoint;
 
-    public Tetragon(Point firstPoint, Point secondPoint, Point thirdPoint, Point fourthPoint) {
-        this.id = IdGenerator.generateId();
+    public Tetragon(long id, Point firstPoint, Point secondPoint, Point thirdPoint, Point fourthPoint) {
+        this.id = id;
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
         this.thirdPoint = thirdPoint;
@@ -19,10 +17,6 @@ public class Tetragon {
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Point getFirstPoint() {

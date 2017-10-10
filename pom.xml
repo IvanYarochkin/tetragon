@@ -13,7 +13,7 @@
         <module>tetragon-resource</module>
         <module>tetragon-model</module>
         <module>tetragon-cache</module>
-        <module>tetragon-utility</module>
+        <module>tetragon-util</module>
     </modules>
 
     <properties>
@@ -51,7 +51,7 @@
 
             <dependency>
                 <groupId>com.yarachkin.tetragon</groupId>
-                <artifactId>tetragon-utility</artifactId>
+                <artifactId>tetragon-util</artifactId>
                 <version>${tetragon.module.version}</version>
             </dependency>
 

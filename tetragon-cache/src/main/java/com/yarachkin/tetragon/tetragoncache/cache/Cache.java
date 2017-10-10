@@ -1,8 +1,12 @@
 package com.yarachkin.tetragon.tetragoncache.cache;
 
 import com.yarachkin.tetragon.tetragoncache.exception.CacheException;
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
+import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
+import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonutil.converter.TetragonConverter;
+import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
+import com.yarachkin.tetragon.tetragonutil.validator.TetragonValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +23,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Properties;
 
 public class Cache {
@@ -75,9 +78,18 @@ public class Cache {
 
             reader.lines()
                     .filter(Strings::isNotEmpty)
-                    .forEach(l -> cache.add(lineToTetragon(l)));
+                    .forEach(line -> {
+                        try {
+                            TetragonDto tetragonDto = lineToTetragonDto(line);
+                            if (TetragonValidator.validate(tetragonDto)){
+                                cache.add(TetragonConverter.convert(tetragonDto));
+                            }
+                        } catch (UtilException e) {
+                            LOGGER.log(Level.ERROR, e.getMessage());
+                        }
+                    });
         } catch (FileNotFoundException e) {
-            throw new CacheException("File " + cacheFilePath + " not found.", e);
+            throw new CacheException("File " + cacheFilePath + "did not find.", e);
         }
     }
 
@@ -86,7 +98,7 @@ public class Cache {
             Path cachePath = Paths.get(cacheFilePath);
 
             if (Files.notExists(cachePath)) {
-                LOGGER.log(Level.INFO, "File " + cacheFilePath + " does not exists.");
+                LOGGER.log(Level.INFO, "File " + cacheFilePath + " does not exist.");
                 Files.createFile(cachePath);
                 LOGGER.log(Level.INFO, "File " + cacheFilePath + " created.");
             }
@@ -95,16 +107,14 @@ public class Cache {
         }
     }
 
-    private Tetragon lineToTetragon(String line) {
+    private TetragonDto lineToTetragonDto(String line) {
         String[] splittedLine = line.split("[ ]");
 
-        Point firstPoint = new Point(Double.parseDouble(splittedLine[0]), Double.parseDouble(splittedLine[1]));
-        Point secondPoint = new Point(Double.parseDouble(splittedLine[2]), Double.parseDouble(splittedLine[3]));
-        Point thirdPoint = new Point(Double.parseDouble(splittedLine[4]), Double.parseDouble(splittedLine[5]));
-        Point fourthPoint = new Point(Double.parseDouble(splittedLine[6]), Double.parseDouble(splittedLine[7]));
+        PointDto firstPointDto = new PointDto(splittedLine[0], splittedLine[1]);
+        PointDto secondPointDto = new PointDto(splittedLine[2], splittedLine[3]);
+        PointDto thirdPointDto = new PointDto(splittedLine[4], splittedLine[5]);
+        PointDto fourthPointDto = new PointDto(splittedLine[6], splittedLine[7]);
 
-        Tetragon tetragon = new Tetragon(firstPoint, secondPoint, thirdPoint, fourthPoint);
-
-        return tetragon;
+        return new TetragonDto(firstPointDto, secondPointDto, thirdPointDto, fourthPointDto);
     }
 }
