@@ -8,6 +8,10 @@ import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
 
 public class TetragonValidator {
 
+    private TetragonValidator(){
+
+    }
+
     public static boolean validate(TetragonDto tetragonDto) {
         if ((tetragonDto == null)) {
             return false;

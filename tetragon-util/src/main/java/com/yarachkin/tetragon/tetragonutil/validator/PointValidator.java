@@ -8,6 +8,10 @@ import java.util.regex.Pattern;
 public class PointValidator {
     private static final String DOUBLE_PATTERN = "-?[0-9]+.?[0-9]*";
 
+    private PointValidator(){
+
+    }
+
     public static boolean isDoubleValues(PointDto pointDto) {
         if (pointDto == null) {
             return false;

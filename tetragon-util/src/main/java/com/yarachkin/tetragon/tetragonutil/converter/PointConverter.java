@@ -7,6 +7,10 @@ import com.yarachkin.tetragon.tetragonutil.validator.PointValidator;
 
 public class PointConverter {
 
+    private PointConverter() {
+
+    }
+
     public static Point convert(PointDto pointDto) throws UtilException {
         if (pointDto == null) {
             return null;

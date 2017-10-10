@@ -31,6 +31,7 @@ public class Cache {
     private static final String CACHE_PROPERTIES = "/cache.properties";
     private static final String CACHE_FILE_DIRECTORY = "cache.file.path";
     private static final String CACHE_FILE_NAME = "cache.file.name";
+    private static final String FILE_MESSAGE = "File ";
 
     private List<Tetragon> cache;
     private String cacheFilePath;
@@ -65,7 +66,7 @@ public class Cache {
         return SingletonHelper.INSTANCE;
     }
 
-    public ArrayList<Tetragon> getCache() {
+    public List<Tetragon> getCache() {
         ArrayList<Tetragon> tempCache = new ArrayList<>();
         tempCache.addAll(cache);
         return tempCache;
@@ -75,21 +76,11 @@ public class Cache {
         try {
             cache = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(cacheFilePath))));
-
             reader.lines()
                     .filter(Strings::isNotEmpty)
-                    .forEach(line -> {
-                        try {
-                            TetragonDto tetragonDto = lineToTetragonDto(line);
-                            if (TetragonValidator.validate(tetragonDto)){
-                                cache.add(TetragonConverter.convert(tetragonDto));
-                            }
-                        } catch (UtilException e) {
-                            LOGGER.log(Level.ERROR, e.getMessage());
-                        }
-                    });
+                    .forEach(line -> addToCache(line));
         } catch (FileNotFoundException e) {
-            throw new CacheException("File " + cacheFilePath + "did not find.", e);
+            throw new CacheException(FILE_MESSAGE + cacheFilePath + "did not find.", e);
         }
     }
 
@@ -98,12 +89,23 @@ public class Cache {
             Path cachePath = Paths.get(cacheFilePath);
 
             if (Files.notExists(cachePath)) {
-                LOGGER.log(Level.INFO, "File " + cacheFilePath + " does not exist.");
+                LOGGER.log(Level.INFO, FILE_MESSAGE + cacheFilePath + " does not exist.");
                 Files.createFile(cachePath);
-                LOGGER.log(Level.INFO, "File " + cacheFilePath + " created.");
+                LOGGER.log(Level.INFO, FILE_MESSAGE + cacheFilePath + " created.");
             }
         } catch (IOException e) {
             throw new CacheException("Unable to create " + cacheFilePath, e);
+        }
+    }
+
+    private void addToCache(String line){
+        try {
+            TetragonDto tetragonDto = lineToTetragonDto(line);
+            if (TetragonValidator.validate(tetragonDto)){
+                cache.add(TetragonConverter.convert(tetragonDto));
+            }
+        } catch (UtilException e) {
+            LOGGER.log(Level.ERROR, e.getMessage());
         }
     }
 

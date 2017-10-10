@@ -8,6 +8,10 @@ import com.yarachkin.tetragon.tetragonutil.idgenerator.IdGenerator;
 
 public class TetragonConverter {
 
+    private TetragonConverter(){
+
+    }
+
     public static Tetragon convert(TetragonDto tetragonDto) throws UtilException {
         if (tetragonDto == null) {
             return null;
