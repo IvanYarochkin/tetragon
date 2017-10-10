@@ -13,9 +13,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
@@ -67,9 +69,20 @@ public class Cache {
     }
 
     public List<Tetragon> getCache() {
-        ArrayList<Tetragon> tempCache = new ArrayList<>();
-        tempCache.addAll(cache);
-        return tempCache;
+        return cache;
+    }
+
+    public void flush() throws CacheException {
+        createFileIfNotExists();
+        cleanFile();
+        try (FileWriter fileWriter = new FileWriter(cacheFilePath);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)){
+            for (Tetragon tetragon : cache){
+                bufferedWriter.write(tetragon+"\n");
+            }
+        } catch (IOException e) {
+            throw new CacheException("Error in file writing.", e);
+        }
     }
 
     private void readFromFile() throws CacheException {
@@ -98,10 +111,10 @@ public class Cache {
         }
     }
 
-    private void addToCache(String line){
+    private void addToCache(String line) {
         try {
             TetragonDto tetragonDto = lineToTetragonDto(line);
-            if (TetragonValidator.validate(tetragonDto)){
+            if (TetragonValidator.validate(tetragonDto)) {
                 cache.add(TetragonConverter.convert(tetragonDto));
             }
         } catch (UtilException e) {
@@ -118,5 +131,15 @@ public class Cache {
         PointDto fourthPointDto = new PointDto(splittedLine[6], splittedLine[7]);
 
         return new TetragonDto(firstPointDto, secondPointDto, thirdPointDto, fourthPointDto);
+    }
+
+    private void cleanFile() throws CacheException {
+
+        try (FileWriter fileWriter = new FileWriter(cacheFilePath);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write("");
+        } catch (Exception e) {
+            throw new CacheException("Error in file cleaning.", e);
+        }
     }
 }
