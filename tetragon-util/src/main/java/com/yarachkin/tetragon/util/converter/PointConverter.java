@@ -15,7 +15,7 @@ public class PointConverter {
         if (pointDto == null) {
             return null;
         }
-        if (!PointValidator.isDoubleValues(pointDto)) {
+        if (!PointValidator.validate(pointDto)) {
             throw new UtilTetragonException("Incorrect values x = " + pointDto.getX() + " or y = " + pointDto.getY());
         }
         double x = Double.parseDouble(pointDto.getX());

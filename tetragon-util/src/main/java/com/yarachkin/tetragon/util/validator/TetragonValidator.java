@@ -17,8 +17,10 @@ public class TetragonValidator {
             return false;
         }
 
-        if (!(PointValidator.isDoubleValues(tetragonDto.getFirstPoint()) && PointValidator.isDoubleValues(tetragonDto.getSecondPoint()) &&
-                PointValidator.isDoubleValues(tetragonDto.getThirdPoint()) && PointValidator.isDoubleValues(tetragonDto.getFourthPoint()))) {
+        if (!(PointValidator.validate(tetragonDto.getFirstPoint())
+                && PointValidator.validate(tetragonDto.getSecondPoint())
+                && PointValidator.validate(tetragonDto.getThirdPoint())
+                && PointValidator.validate(tetragonDto.getFourthPoint()))) {
             return false;
         }
 

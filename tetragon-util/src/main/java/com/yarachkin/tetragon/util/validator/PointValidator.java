@@ -1,30 +1,28 @@
 package com.yarachkin.tetragon.util.validator;
 
 import com.yarachkin.tetragon.model.dto.PointDto;
+import com.yarachkin.tetragon.util.common.StringUtil;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PointValidator {
-    private static final String DOUBLE_PATTERN = "-?\\d{1,6}.?\\d{0,6}";
 
     private PointValidator() {
 
     }
 
-    public static boolean isDoubleValues(PointDto pointDto) {
+    public static boolean validate(PointDto pointDto) {
         if (pointDto == null) {
             return false;
         }
 
-        Pattern pattern = Pattern.compile(DOUBLE_PATTERN);
-        Matcher matcher = pattern.matcher(pointDto.getX());
-        if (!matcher.matches()) {
+        if (!StringUtil.isDoubleValue(pointDto.getX())){
             return false;
         }
 
-        matcher = pattern.matcher(pointDto.getY());
-
-        return matcher.matches();
+        return StringUtil.isDoubleValue(pointDto.getY());
     }
+
+
 }
