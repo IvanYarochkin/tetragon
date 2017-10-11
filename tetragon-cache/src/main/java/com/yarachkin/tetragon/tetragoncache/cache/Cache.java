@@ -50,7 +50,7 @@ public class Cache {
     public boolean remove(long id) throws CacheTetragonException {
         for (int i = 0; i < cache.size(); i++) {
             if (cache.get(i).getId() == id) {
-                cache.remove(id);
+                cache.remove(i);
                 return true;
             }
         }

@@ -63,14 +63,15 @@ public class Reader {
     }
 
     public void readFromFile() throws CacheTetragonException {
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath))))) {
             createFileIfNotExists();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath))));
             reader.lines()
                     .filter(Strings::isNotEmpty)
                     .forEach(this::addToCache);
         } catch (FileNotFoundException e) {
             throw new CacheTetragonException(FILE_MESSAGE + filePath + "did not find.", e);
+        } catch (IOException e) {
+            throw new CacheTetragonException("Read error", e);
         }
     }
 
@@ -90,7 +91,7 @@ public class Reader {
 
     private void addToCache(String line) {
         try {
-            TetragonDto tetragonDto = LineParser.parse(line,"[ ]");
+            TetragonDto tetragonDto = LineParser.parse(line, "[ ]");
             if (TetragonValidator.validate(tetragonDto)) {
                 Cache.getInstance().add(TetragonConverter.convert(tetragonDto));
             }
