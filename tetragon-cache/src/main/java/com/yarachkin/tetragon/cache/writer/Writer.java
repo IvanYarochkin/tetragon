@@ -45,7 +45,6 @@ public class Writer {
     }
 
     public void write() throws CacheTetragonException {
-        cleanFile();
         try (FileWriter fileWriter = new FileWriter(filePath);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             for (Tetragon tetragon : Cache.getInstance().getCache()) {
@@ -53,15 +52,6 @@ public class Writer {
             }
         } catch (IOException e) {
             throw new CacheTetragonException("Error in file writing.", e);
-        }
-    }
-
-    private void cleanFile() throws CacheTetragonException {
-        try (FileWriter fileWriter = new FileWriter(filePath);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write("");
-        } catch (Exception e) {
-            throw new CacheTetragonException("Error in file cleaning.", e);
         }
     }
 }

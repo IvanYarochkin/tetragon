@@ -3,9 +3,6 @@ package com.yarachkin.tetragon.util.validator;
 import com.yarachkin.tetragon.model.dto.PointDto;
 import com.yarachkin.tetragon.util.common.StringUtil;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class PointValidator {
 
     private PointValidator() {
@@ -17,7 +14,7 @@ public class PointValidator {
             return false;
         }
 
-        if (!StringUtil.isDoubleValue(pointDto.getX())){
+        if (!StringUtil.isDoubleValue(pointDto.getX())) {
             return false;
         }
 

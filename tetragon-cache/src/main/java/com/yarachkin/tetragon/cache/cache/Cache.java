@@ -6,6 +6,7 @@ import com.yarachkin.tetragon.model.entity.Tetragon;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Cache {
 
@@ -37,24 +38,28 @@ public class Cache {
         cache.add(tetragon);
     }
 
-    public boolean update(long id, Tetragon tetragon) throws CacheTetragonException {
-        for (int i = 0; i < cache.size(); i++) {
-            if (cache.get(i).getId() == id) {
-                cache.set(i, tetragon);
-                return true;
-            }
+    public boolean update(long id, Tetragon tetragon) {
+
+        Optional<Tetragon> tetragonOption = cache.stream()
+                .filter(tetragon1 -> tetragon.getId() == id)
+                .findFirst();
+        if (!tetragonOption.isPresent()) {
+            return false;
         }
-        throw new CacheTetragonException("Id wasn't found");
+
+        return true;
     }
 
-    public boolean remove(long id) throws CacheTetragonException {
-        for (int i = 0; i < cache.size(); i++) {
-            if (cache.get(i).getId() == id) {
-                cache.remove(i);
-                return true;
-            }
+    public boolean remove(long id) {
+
+        Optional<Tetragon> tetragonOptional = cache.stream()
+                .filter(tetragon -> tetragon.getId() == id)
+                .findFirst();
+        if (!tetragonOptional.isPresent()) {
+            return false;
         }
-        throw new CacheTetragonException("Id wasn't found");
+
+        return true;
     }
 
     public void flush() throws CacheTetragonException {

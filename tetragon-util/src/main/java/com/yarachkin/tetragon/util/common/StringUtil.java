@@ -16,6 +16,7 @@ public class StringUtil {
         if (!matcher.matches()) {
             return false;
         }
+
         return true;
     }
 }

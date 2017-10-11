@@ -3,8 +3,8 @@ package com.yarachkin.tetragon.util.converter;
 import com.yarachkin.tetragon.model.dto.TetragonDto;
 import com.yarachkin.tetragon.model.entity.Point;
 import com.yarachkin.tetragon.model.entity.Tetragon;
-import com.yarachkin.tetragon.util.exception.UtilTetragonException;
 import com.yarachkin.tetragon.util.common.IdGenerator;
+import com.yarachkin.tetragon.util.exception.UtilTetragonException;
 
 public class TetragonConverter {
 
