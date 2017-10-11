@@ -11,7 +11,7 @@ public class TetragonValidatorTest {
     private TetragonDto tetragonDto;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         PointDto firstPointDto = new PointDto("1.0", "1.0");
         PointDto secondPointDto = new PointDto("2.0", "2.0");
         PointDto thirdPointDto = new PointDto("3.0", "1.0");
@@ -22,45 +22,45 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateTest() throws Exception {
+    public void validateTest() {
         assertEquals(TetragonValidator.validate(tetragonDto), true);
     }
 
     @Test
-    public void validateNullValueTest() throws Exception {
+    public void validateNullValueTest() {
         assertEquals(TetragonValidator.validate(null), false);
     }
 
     @Test
-    public void validateIncorrectFirstPointValuesTest() throws Exception {
+    public void validateIncorrectFirstPointValuesTest() {
         tetragonDto.getFirstPoint().setX("1.f3");
         tetragonDto.getFirstPoint().setY("d2.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
-    public void validateIncorrectSecondPointValuesTest() throws Exception {
+    public void validateIncorrectSecondPointValuesTest() {
         tetragonDto.getSecondPoint().setX("a.f3");
         tetragonDto.getSecondPoint().setY("2z.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
-    public void validateIncorrectThirdPointValuesTest() throws Exception {
+    public void validateIncorrectThirdPointValuesTest() {
         tetragonDto.getThirdPoint().setX("1a.f3");
         tetragonDto.getThirdPoint().setY("23z.43");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
-    public void validateIncorrectFourthPointValuesTest() throws Exception {
+    public void validateIncorrectFourthPointValuesTest() {
         tetragonDto.getFourthPoint().setX("a33.f3");
         tetragonDto.getFourthPoint().setY("2z3.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
-    public void validateSamePointValuesTest() throws Exception {
+    public void validateSamePointValuesTest() {
         tetragonDto.getFourthPoint().setX("a33.f3");
         tetragonDto.getFourthPoint().setY("2z3.4");
         tetragonDto.getSecondPoint().setX("a33.f3");
@@ -69,7 +69,7 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateAllSamePointValuesTest() throws Exception {
+    public void validateAllSamePointValuesTest() {
         tetragonDto.getFirstPoint().setX("a33.f3");
         tetragonDto.getFirstPoint().setY("2z3.4");
         tetragonDto.getSecondPoint().setX("a33.f3");
@@ -83,7 +83,7 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateThreePointsOnLineTest() throws Exception {
+    public void validateThreePointsOnLineTest() {
         tetragonDto.getFirstPoint().setX("1");
         tetragonDto.getFirstPoint().setY("1");
         tetragonDto.getSecondPoint().setX("4");
@@ -95,7 +95,7 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateThreePointsOnOXTest() throws Exception {
+    public void validateThreePointsOnOXTest() {
         tetragonDto.getSecondPoint().setX("4");
         tetragonDto.getSecondPoint().setY("0");
         tetragonDto.getThirdPoint().setX("3");
@@ -107,7 +107,7 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateThreePointsOnOYTest() throws Exception {
+    public void validateThreePointsOnOYTest() {
         tetragonDto.getFirstPoint().setX("0");
         tetragonDto.getFirstPoint().setY("2");
         tetragonDto.getSecondPoint().setX("0");
@@ -119,7 +119,7 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateThreePointsOnLineWithIncorrectPointValuesTest() throws Exception {
+    public void validateThreePointsOnLineWithIncorrectPointValuesTest() {
         tetragonDto.getFirstPoint().setX("1.2d");
         tetragonDto.getFirstPoint().setY("d2.3");
 
@@ -127,7 +127,7 @@ public class TetragonValidatorTest {
     }
 
     @Test
-    public void validateFourPointsOnLineTest() throws Exception {
+    public void validateFourPointsOnLineTest() {
         tetragonDto.getFirstPoint().setX("1");
         tetragonDto.getFirstPoint().setY("1");
         tetragonDto.getSecondPoint().setX("4");

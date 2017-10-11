@@ -7,39 +7,46 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class PointValidatorTest {
-    PointDto pointDto;
+    private PointDto pointDto;
 
     @BeforeMethod
-    public void setUp() throws Exception {
+    public void setUp() {
         pointDto = new PointDto("1", "2");
     }
 
     @Test
-    public void isDoubleValuesTest() throws Exception {
+    public void isDoubleValuesTest() {
         assertEquals(PointValidator.isDoubleValues(pointDto), true);
     }
 
     @Test
-    public void isDoubleValuesWithIncorrectFirstValueTest() throws Exception {
+    public void isDoubleValuesWithIncorrectFirstValueTest() {
         pointDto.setX("test");
         assertEquals(PointValidator.isDoubleValues(pointDto), false);
     }
 
     @Test
-    public void isDoubleValuesWithIncorrectSecondValueTest() throws Exception {
+    public void isDoubleValuesWithIncorrectSecondValueTest() {
         pointDto.setY("test");
         assertEquals(PointValidator.isDoubleValues(pointDto), false);
     }
 
     @Test
-    public void IsDoubleWithIntegerValuesTest() throws Exception {
+    public void IsDoubleWithIntegerValuesTest() {
         pointDto.setX("1");
         pointDto.setY("2");
         assertEquals(PointValidator.isDoubleValues(pointDto), true);
     }
 
     @Test
-    public void IsDoubleWithNullValueTest() throws Exception {
+    public void IsDoubleWithNegativeValuesTest() {
+        pointDto.setX("-1");
+        pointDto.setY("-24.2");
+        assertEquals(PointValidator.isDoubleValues(pointDto), true);
+    }
+
+    @Test
+    public void IsDoubleWithNullValueTest() {
         assertEquals(PointValidator.isDoubleValues(null), false);
     }
 

@@ -26,6 +26,34 @@ public class PointDto {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        PointDto pointDto = (PointDto) o;
+
+        if (x != null ? !x.equals(pointDto.x) : pointDto.x != null) {
+            return false;
+        }
+        return y != null ? y.equals(pointDto.y) : pointDto.y == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 1;
+        int prime = 31;
+
+        result = result * prime + x.hashCode();
+        result = result * prime + y.hashCode();
+
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "PointDto{x = " + x + ", y = " + y + "}";
     }

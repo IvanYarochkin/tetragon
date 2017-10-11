@@ -3,19 +3,20 @@ package com.yarachkin.tetragon.tetragonutil.converter;
 import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
+import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import com.yarachkin.tetragon.tetragonutil.idgenerator.IdGenerator;
 
 public class TetragonConverter {
 
-    private TetragonConverter(){
+    private TetragonConverter() {
 
     }
 
-    public static Tetragon convert(TetragonDto tetragonDto) throws UtilException {
+    public static Tetragon convert(TetragonDto tetragonDto) throws UtilTetragonException {
         if (tetragonDto == null) {
             return null;
         }
+
         Point firstPoint = PointConverter.convert(tetragonDto.getFirstPoint());
         Point secondPoint = PointConverter.convert(tetragonDto.getSecondPoint());
         Point thirdPoint = PointConverter.convert(tetragonDto.getThirdPoint());
@@ -24,7 +25,7 @@ public class TetragonConverter {
         return new Tetragon(IdGenerator.generateId(), firstPoint, secondPoint, thirdPoint, fourthPoint);
     }
 
-    public static Tetragon convert(Tetragon tetragon, TetragonDto tetragonDto) throws UtilException {
+    public static Tetragon convert(Tetragon tetragon, TetragonDto tetragonDto) throws UtilTetragonException {
         if (tetragonDto == null) {
             return null;
         }

@@ -14,6 +14,7 @@
         <module>tetragon-model</module>
         <module>tetragon-cache</module>
         <module>tetragon-util</module>
+        <module>tetragon-dao</module>
     </modules>
 
     <properties>
@@ -52,6 +53,18 @@
             <dependency>
                 <groupId>com.yarachkin.tetragon</groupId>
                 <artifactId>tetragon-util</artifactId>
+                <version>${tetragon.module.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yarachkin.tetragon</groupId>
+                <artifactId>tetragon-cache</artifactId>
+                <version>${tetragon.module.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.yarachkin.tetragon</groupId>
+                <artifactId>tetragon-dao</artifactId>
                 <version>${tetragon.module.version}</version>
             </dependency>
 

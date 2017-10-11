@@ -2,7 +2,7 @@ package com.yarachkin.tetragon.tetragonutil.converter;
 
 import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
+import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import com.yarachkin.tetragon.tetragonutil.validator.PointValidator;
 
 public class PointConverter {
@@ -11,12 +11,12 @@ public class PointConverter {
 
     }
 
-    public static Point convert(PointDto pointDto) throws UtilException {
+    public static Point convert(PointDto pointDto) throws UtilTetragonException {
         if (pointDto == null) {
             return null;
         }
         if (!PointValidator.isDoubleValues(pointDto)) {
-            throw new UtilException("Incorrect values x = " + pointDto.getX() + " or y = " + pointDto.getY());
+            throw new UtilTetragonException("Incorrect values x = " + pointDto.getX() + " or y = " + pointDto.getY());
         }
         double x = Double.parseDouble(pointDto.getX());
         double y = Double.parseDouble(pointDto.getY());

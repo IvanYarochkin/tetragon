@@ -2,7 +2,7 @@ package com.yarachkin.tetragon.tetragonutil.converter;
 
 import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
+import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -19,12 +19,12 @@ public class PointConverterTest {
     }
 
     @Test
-    public void convertTest() throws UtilException {
+    public void convertTest() throws UtilTetragonException {
         assertEquals(PointConverter.convert(pointDto), point);
     }
 
     @Test
-    public void convertZeroValueTest() throws UtilException {
+    public void convertZeroValueTest() throws UtilTetragonException {
         pointDto.setX("0.0");
         pointDto.setY("0.0");
         point.setX(0.0);
@@ -33,7 +33,7 @@ public class PointConverterTest {
     }
 
     @Test
-    public void convertNegativeValueTest() throws UtilException {
+    public void convertNegativeValueTest() throws UtilTetragonException {
         pointDto.setX("-1.5");
         pointDto.setY("-2.6");
         point.setX(-1.5);
@@ -42,7 +42,7 @@ public class PointConverterTest {
     }
 
     @Test
-    public void convertIntegerValueTest() throws UtilException {
+    public void convertIntegerValueTest() throws UtilTetragonException {
         pointDto.setX("5");
         pointDto.setY("7");
         point.setX(5.0);
@@ -51,19 +51,19 @@ public class PointConverterTest {
     }
 
     @Test
-    public void convertNulValueTest() throws UtilException {
+    public void convertNulValueTest() throws UtilTetragonException {
         assertEquals(PointConverter.convert(null), null);
     }
 
-    @Test(expectedExceptions = UtilException.class)
-    public void convertIncorrectXValueTest() throws UtilException {
+    @Test(expectedExceptions = UtilTetragonException.class)
+    public void convertIncorrectXValueTest() throws UtilTetragonException {
         pointDto.setX("1.2d2");
         pointDto.setY("7");
         PointConverter.convert(pointDto);
     }
 
-    @Test(expectedExceptions = UtilException.class)
-    public void convertIncorrectYValueTest() throws UtilException {
+    @Test(expectedExceptions = UtilTetragonException.class)
+    public void convertIncorrectYValueTest() throws UtilTetragonException {
         pointDto.setX("1");
         pointDto.setY("3g.4d");
         PointConverter.convert(pointDto);

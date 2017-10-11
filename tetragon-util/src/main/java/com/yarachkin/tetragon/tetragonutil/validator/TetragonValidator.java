@@ -4,11 +4,11 @@ import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonutil.converter.PointConverter;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilException;
+import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 
 public class TetragonValidator {
 
-    private TetragonValidator(){
+    private TetragonValidator() {
 
     }
 
@@ -72,7 +72,7 @@ public class TetragonValidator {
             }
 
             return true;
-        } catch (UtilException e) {
+        } catch (UtilTetragonException e) {
             return false;
         }
     }

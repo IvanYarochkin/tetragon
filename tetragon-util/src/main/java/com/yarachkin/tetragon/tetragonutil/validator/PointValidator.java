@@ -6,9 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PointValidator {
-    private static final String DOUBLE_PATTERN = "-?[0-9]+.?[0-9]*";
+    private static final String DOUBLE_PATTERN = "-?\\d{1,6}.?\\d{0,6}";
 
-    private PointValidator(){
+    private PointValidator() {
 
     }
 
@@ -24,10 +24,7 @@ public class PointValidator {
         }
 
         matcher = pattern.matcher(pointDto.getY());
-        if (!matcher.matches()) {
-            return false;
-        }
 
-        return true;
+        return matcher.matches();
     }
 }
