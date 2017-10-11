@@ -9,6 +9,13 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
 
+    <properties>
+        <log4j.version>2.9.1</log4j.version>
+        <tetragon.module.version>1.0-SNAPSHOT</tetragon.module.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <testng.version>6.11</testng.version>
+    </properties>
+
     <modules>
         <module>tetragon-resource</module>
         <module>tetragon-model</module>
@@ -17,12 +24,6 @@
         <module>tetragon-dao</module>
     </modules>
 
-    <properties>
-        <log4j.version>2.9.1</log4j.version>
-        <tetragon.module.version>1.0-SNAPSHOT</tetragon.module.version>
-        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
-        <testng.version>6.11</testng.version>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -96,6 +97,15 @@
                                 <filtering>true</filtering>
                             </resource>
                         </resources>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
                     </configuration>
                 </plugin>
             </plugins>
