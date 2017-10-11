@@ -11,7 +11,7 @@ public class Cache {
 
     private List<Tetragon> cache;
 
-    private Cache() throws CacheTetragonException {
+    private Cache() {
         cache = new ArrayList<>();
     }
 
@@ -19,11 +19,7 @@ public class Cache {
         private static final Cache INSTANCE;
 
         static {
-            try {
-                INSTANCE = new Cache();
-            } catch (CacheTetragonException e) {
-                throw new ExceptionInInitializerError(e);
-            }
+            INSTANCE = new Cache();
         }
     }
 

@@ -4,8 +4,6 @@ import com.yarachkin.tetragon.tetragoncache.cache.Cache;
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 

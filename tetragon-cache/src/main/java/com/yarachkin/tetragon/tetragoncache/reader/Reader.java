@@ -90,7 +90,7 @@ public class Reader {
 
     private void addToCache(String line) {
         try {
-            TetragonDto tetragonDto = LineParser.parse(line);
+            TetragonDto tetragonDto = LineParser.parse(line,"[ ]");
             if (TetragonValidator.validate(tetragonDto)) {
                 Cache.getInstance().add(TetragonConverter.convert(tetragonDto));
             }

@@ -67,11 +67,8 @@ public class TetragonValidator {
                 return false;
             }
 
-            if ((thirdX - firstX) * (secondY - firstY) == (thirdY - firstY) * (secondX - firstX)) {
-                return false;
-            }
+            return !((thirdX - firstX) * (secondY - firstY) == (thirdY - firstY) * (secondX - firstX));
 
-            return true;
         } catch (UtilTetragonException e) {
             return false;
         }

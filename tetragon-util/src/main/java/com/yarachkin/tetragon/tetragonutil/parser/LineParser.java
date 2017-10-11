@@ -6,8 +6,12 @@ import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 
 public class LineParser {
 
-    public static TetragonDto parse(String line) throws UtilTetragonException {
-        String[] splittedLine = line.split("[ ]");
+    private LineParser(){
+
+    }
+
+    public static TetragonDto parse(String line, String pattern) throws UtilTetragonException {
+        String[] splittedLine = line.split(pattern);
 
         if (splittedLine.length != 8) {
             throw new UtilTetragonException("Line hasn't 8 parameters, parameters = " + splittedLine.length);
