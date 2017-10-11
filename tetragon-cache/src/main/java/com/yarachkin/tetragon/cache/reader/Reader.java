@@ -18,9 +18,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 
 public class Reader {
@@ -64,7 +61,6 @@ public class Reader {
 
     public void readFromFile() throws CacheTetragonException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath))))) {
-            createFileIfNotExists();
             reader.lines()
                     .filter(Strings::isNotEmpty)
                     .forEach(this::addToCache);
@@ -72,20 +68,6 @@ public class Reader {
             throw new CacheTetragonException(FILE_MESSAGE + filePath + "did not find.", e);
         } catch (IOException e) {
             throw new CacheTetragonException("Read error", e);
-        }
-    }
-
-    public void createFileIfNotExists() throws CacheTetragonException {
-        try {
-            Path cachePath = Paths.get(filePath);
-
-            if (Files.notExists(cachePath)) {
-                LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " does not exist.");
-                Files.createFile(cachePath);
-                LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " created.");
-            }
-        } catch (IOException e) {
-            throw new CacheTetragonException("Unable to create " + filePath, e);
         }
     }
 

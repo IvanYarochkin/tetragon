@@ -6,7 +6,7 @@ import com.yarachkin.tetragon.util.exception.UtilTetragonException;
 
 public class LineParser {
 
-    private LineParser(){
+    private LineParser() {
 
     }
 

@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.util.idgenerator;
+package com.yarachkin.tetragon.util.generator;
 
 public class IdGenerator {
     private static long id = 0;
@@ -8,7 +8,6 @@ public class IdGenerator {
     }
 
     public static long generateId() {
-        id++;
-        return id;
+        return ++id;
     }
 }

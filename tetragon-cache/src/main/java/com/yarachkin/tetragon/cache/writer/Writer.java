@@ -2,7 +2,6 @@ package com.yarachkin.tetragon.cache.writer;
 
 import com.yarachkin.tetragon.cache.cache.Cache;
 import com.yarachkin.tetragon.cache.exception.CacheTetragonException;
-import com.yarachkin.tetragon.cache.reader.Reader;
 import com.yarachkin.tetragon.model.entity.Tetragon;
 
 import java.io.BufferedWriter;
@@ -46,7 +45,6 @@ public class Writer {
     }
 
     public void write() throws CacheTetragonException {
-        Reader.getInstance().createFileIfNotExists();
         cleanFile();
         try (FileWriter fileWriter = new FileWriter(filePath);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {

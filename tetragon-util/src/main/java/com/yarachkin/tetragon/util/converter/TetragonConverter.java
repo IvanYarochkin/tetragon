@@ -4,7 +4,7 @@ import com.yarachkin.tetragon.model.dto.TetragonDto;
 import com.yarachkin.tetragon.model.entity.Point;
 import com.yarachkin.tetragon.model.entity.Tetragon;
 import com.yarachkin.tetragon.util.exception.UtilTetragonException;
-import com.yarachkin.tetragon.util.idgenerator.IdGenerator;
+import com.yarachkin.tetragon.util.generator.IdGenerator;
 
 public class TetragonConverter {
 
