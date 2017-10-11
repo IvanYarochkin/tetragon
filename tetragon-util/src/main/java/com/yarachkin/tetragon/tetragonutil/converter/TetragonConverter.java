@@ -1,9 +1,11 @@
 package com.yarachkin.tetragon.tetragonutil.converter;
 
+import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
+import com.yarachkin.tetragon.tetragonutil.common.StringUtil;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 
 public class TetragonConverter {
@@ -31,17 +33,28 @@ public class TetragonConverter {
         }
 
         if (tetragonDto.getFirstPoint() != null) {
-            tetragon.setFirstPoint(PointConverter.convert(tetragonDto.getFirstPoint()));
+            tetragon.setFirstPoint(mergePointWithPointDto(tetragon.getFirstPoint(), tetragonDto.getFirstPoint()));
         }
         if (tetragonDto.getSecondPoint() != null) {
-            tetragon.setSecondPoint(PointConverter.convert(tetragonDto.getSecondPoint()));
+            tetragon.setSecondPoint(mergePointWithPointDto(tetragon.getSecondPoint(), tetragonDto.getSecondPoint()));
         }
         if (tetragonDto.getThirdPoint() != null) {
-            tetragon.setThirdPoint(PointConverter.convert(tetragonDto.getThirdPoint()));
+            tetragon.setThirdPoint(mergePointWithPointDto(tetragon.getThirdPoint(), tetragonDto.getThirdPoint()));
         }
         if (tetragonDto.getFourthPoint() != null) {
-            tetragon.setFourthPoint(PointConverter.convert(tetragonDto.getFourthPoint()));
+            tetragon.setFourthPoint(mergePointWithPointDto(tetragon.getFourthPoint(), tetragonDto.getFourthPoint()));
         }
         return tetragon;
+    }
+
+    private static Point mergePointWithPointDto(Point point, PointDto pointDto) {
+        if (pointDto.getX() != null && StringUtil.isDoubleValue(pointDto.getX())) {
+            point.setX(Double.parseDouble(pointDto.getX()));
+        }
+        if (pointDto.getY() != null && StringUtil.isDoubleValue(pointDto.getY())) {
+            point.setY(Double.parseDouble(pointDto.getY()));
+        }
+
+        return point;
     }
 }

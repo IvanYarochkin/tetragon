@@ -58,7 +58,7 @@ public class Cache {
         if (!tetragonOptional.isPresent()) {
             return false;
         }
-
+        cache.remove(tetragonOptional.get());
         return true;
     }
 

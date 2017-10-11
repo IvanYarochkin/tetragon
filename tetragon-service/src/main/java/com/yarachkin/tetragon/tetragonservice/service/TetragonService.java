@@ -18,6 +18,6 @@ public interface TetragonService {
 
     boolean delete(long id) throws ServiceTetragonException;
 
-    List getAll();
+    List<Tetragon> getAll();
 
 }
