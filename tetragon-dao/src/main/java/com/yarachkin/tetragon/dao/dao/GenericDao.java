@@ -1,19 +1,19 @@
 package com.yarachkin.tetragon.dao.dao;
 
 import com.yarachkin.tetragon.dao.exception.DaoTetragonException;
-import com.yarachkin.tetragon.model.entity.Tetragon;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface GenericDao {
+public interface GenericDao<E> {
 
-    void create(Tetragon tetragon) throws DaoTetragonException;
+    void create(E entity) throws DaoTetragonException;
 
-    Tetragon find(long id) throws DaoTetragonException;
+    Optional<E> findById(long id);
 
-    boolean update(long id, Tetragon tetragon) throws DaoTetragonException;
+    boolean update(long id, E entity) throws DaoTetragonException;
 
     boolean delete(long id) throws DaoTetragonException;
 
-    List<Tetragon> findAll();
+    List<E> findAll();
 }
