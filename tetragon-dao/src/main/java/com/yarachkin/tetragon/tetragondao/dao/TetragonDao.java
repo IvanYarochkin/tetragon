@@ -21,5 +21,5 @@ public interface TetragonDao extends GenericDao<Tetragon> {
     boolean delete(long id) throws DaoTetragonException;
 
     @Override
-    List findAll();
+    List<Tetragon> findAll();
 }
