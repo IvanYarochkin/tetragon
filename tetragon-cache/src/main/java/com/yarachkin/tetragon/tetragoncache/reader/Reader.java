@@ -12,12 +12,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class Reader {
@@ -60,11 +60,15 @@ public class Reader {
     }
 
     public void readFromFile() throws CacheTetragonException {
-        try (InputStreamReader inputStreamReader = new InputStreamReader(new FileInputStream(new File(filePath)));
-             BufferedReader reader = new BufferedReader(inputStreamReader)) {
-            reader.lines()
+        try {
+            List<String> lines = new ArrayList<>();
+
+            Files.lines(Paths.get(filePath))
                     .filter(Strings::isNotEmpty)
-                    .forEach(this::addToCache);
+                    .forEach(lines::add);
+
+            lines.forEach(this::addToCache);
+
         } catch (FileNotFoundException e) {
             throw new CacheTetragonException(FILE_MESSAGE + filePath + "did not find.", e);
         } catch (IOException e) {
@@ -73,7 +77,6 @@ public class Reader {
     }
 
     private void addToCache(String line) {
-        // TODO: 12.10.2017 Create adding after read
         try {
             TetragonDto tetragonDto = LineParser.parse(line, "\\s");
             if (TetragonValidator.validate(tetragonDto)) {

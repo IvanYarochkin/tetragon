@@ -54,7 +54,7 @@ public class TetragonServiceImpl implements TetragonService {
 
             return tetragonDao.update(id, TetragonConverter.convert(tetragon.get(), tetragonDto));
 
-        } catch (DaoTetragonException | UtilTetragonException e) {
+        } catch (DaoTetragonException e) {
             throw new ServiceTetragonException(e);
         }
     }

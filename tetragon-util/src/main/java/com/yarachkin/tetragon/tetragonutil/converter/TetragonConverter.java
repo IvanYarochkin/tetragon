@@ -27,7 +27,7 @@ public class TetragonConverter {
         return new Tetragon(IdGenerator.generateId(), firstPoint, secondPoint, thirdPoint, fourthPoint);
     }
 
-    public static Tetragon convert(Tetragon tetragon, TetragonDto tetragonDto) throws UtilTetragonException {
+    public static Tetragon convert(Tetragon tetragon, TetragonDto tetragonDto) {
         if (tetragonDto == null) {
             return null;
         }
@@ -48,9 +48,11 @@ public class TetragonConverter {
     }
 
     private static Point mergePointWithPointDto(Point point, PointDto pointDto) {
+
         if (pointDto.getX() != null && StringUtil.isDoubleValue(pointDto.getX())) {
             point.setX(Double.parseDouble(pointDto.getX()));
         }
+
         if (pointDto.getY() != null && StringUtil.isDoubleValue(pointDto.getY())) {
             point.setY(Double.parseDouble(pointDto.getY()));
         }
