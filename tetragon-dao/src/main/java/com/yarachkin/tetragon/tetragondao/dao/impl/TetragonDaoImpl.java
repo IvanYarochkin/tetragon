@@ -28,7 +28,7 @@ public class TetragonDaoImpl implements TetragonDao {
     public Optional<Tetragon> findById(long id) {
 
         return Cache.getInstance().getCache().stream()
-                .filter(tetragon1 -> tetragon1.getId() == id)
+                .filter(tetragon -> tetragon.getId() == id)
                 .findFirst();
     }
 

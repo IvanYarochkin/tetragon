@@ -43,9 +43,8 @@ public class TetragonValidator {
             return false;
         }
 
-        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getSecond(), tetragonDto.getThird(), tetragonDto.getFourth());
+        return checkThreePoints(tetragonDto.getSecond(), tetragonDto.getThird(), tetragonDto.getFourth());
 
-        return isMoreThenTwoPointsOnLine;
     }
 
     private static boolean checkThreePoints(PointDto firstPointDto, PointDto secondPointDto, PointDto thirdPointDto) {

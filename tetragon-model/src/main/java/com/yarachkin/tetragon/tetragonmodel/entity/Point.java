@@ -1,6 +1,6 @@
 package com.yarachkin.tetragon.tetragonmodel.entity;
 
-public class Point {
+public class Point implements Cloneable {
     private double x;
     private double y;
 
@@ -48,6 +48,11 @@ public class Point {
         result = result * prime + (int) y;
 
         return result;
+    }
+
+    @Override
+    public Point clone() throws CloneNotSupportedException {
+        return (Point) super.clone();
     }
 
     @Override

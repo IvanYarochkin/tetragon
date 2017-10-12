@@ -73,8 +73,9 @@ public class Reader {
     }
 
     private void addToCache(String line) {
+        // TODO: 12.10.2017 Create adding after read
         try {
-            TetragonDto tetragonDto = LineParser.parse(line, "[ ]");
+            TetragonDto tetragonDto = LineParser.parse(line, "\\s");
             if (TetragonValidator.validate(tetragonDto)) {
                 Cache.getInstance().add(TetragonConverter.convert(tetragonDto));
             }

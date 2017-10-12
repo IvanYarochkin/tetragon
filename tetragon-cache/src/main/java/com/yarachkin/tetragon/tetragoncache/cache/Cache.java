@@ -30,9 +30,18 @@ public class Cache {
 
     public List<Tetragon> getCache() {
         List<Tetragon> cloneCache = new ArrayList<>();
-        cloneCache.addAll(cache);
+
+        cache.forEach(tetragon -> {
+            try {
+                cloneCache.add(tetragon.clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        });
+
         return cloneCache;
     }
+
 
     public void add(Tetragon tetragon) {
         cache.add(tetragon);

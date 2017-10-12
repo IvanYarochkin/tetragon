@@ -1,6 +1,6 @@
 package com.yarachkin.tetragon.tetragonmodel.entity;
 
-public class Tetragon {
+public class Tetragon implements Cloneable {
     private long id;
     private Point first;
     private Point second;
@@ -78,6 +78,18 @@ public class Tetragon {
         result = result * prime + fourth.hashCode();
 
         return result;
+    }
+
+    @Override
+    public Tetragon clone() throws CloneNotSupportedException {
+        Tetragon cloneTetragon = (Tetragon) super.clone();
+
+        cloneTetragon.first = first.clone();
+        cloneTetragon.second = second.clone();
+        cloneTetragon.third = third.clone();
+        cloneTetragon.fourth = fourth.clone();
+
+        return cloneTetragon;
     }
 
     @Override
