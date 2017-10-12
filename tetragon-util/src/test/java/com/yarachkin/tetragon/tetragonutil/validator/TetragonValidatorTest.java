@@ -12,12 +12,12 @@ public class TetragonValidatorTest {
 
     @BeforeMethod
     public void setUp() {
-        PointDto firstPointDto = new PointDto("1.0", "1.0");
-        PointDto secondPointDto = new PointDto("2.0", "2.0");
-        PointDto thirdPointDto = new PointDto("3.0", "1.0");
-        PointDto fourthPointDto = new PointDto("4.0", "2.0");
+        PointDto first = new PointDto("1.0", "1.0");
+        PointDto second = new PointDto("2.0", "2.0");
+        PointDto third = new PointDto("3.0", "1.0");
+        PointDto fourth = new PointDto("4.0", "2.0");
 
-        tetragonDto = new TetragonDto(firstPointDto, secondPointDto, thirdPointDto, fourthPointDto);
+        tetragonDto = new TetragonDto(first, second, third, fourth);
 
     }
 

@@ -14,14 +14,14 @@ public class LineParserTest {
 
     @BeforeMethod
     public void setUp() {
-        pattern = "[ ]";
+        pattern = "\\s";
 
-        PointDto firstPointDto = new PointDto("1.3", "2.2");
-        PointDto secondPointDto = new PointDto("3.3", "4.4");
-        PointDto thirdPointDto = new PointDto("4.4", "3.5");
-        PointDto fourthPointDto = new PointDto("8.4", "5.5");
+        PointDto first = new PointDto("1.3", "2.2");
+        PointDto second = new PointDto("3.3", "4.4");
+        PointDto third = new PointDto("4.4", "3.5");
+        PointDto fourth = new PointDto("8.4", "5.5");
 
-        tetragonDto = new TetragonDto(firstPointDto, secondPointDto, thirdPointDto, fourthPointDto);
+        tetragonDto = new TetragonDto(first, second, third, fourth);
     }
 
     @Test
