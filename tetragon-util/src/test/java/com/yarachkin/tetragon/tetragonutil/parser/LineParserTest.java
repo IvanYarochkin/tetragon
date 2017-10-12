@@ -31,7 +31,7 @@ public class LineParserTest {
 
     @Test
     public void parseWithStringParametersTest() throws UtilTetragonException {
-        tetragonDto.getFirstPoint().setY("2.3d");
+        tetragonDto.getFirst().setY("2.3d");
         assertEquals(LineParser.parse("1.3 2.3d 3.3 4.4 4.4 3.5 8.4 5.5", pattern), tetragonDto);
     }
 

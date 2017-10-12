@@ -2,53 +2,53 @@ package com.yarachkin.tetragon.tetragonmodel.entity;
 
 public class Tetragon {
     private long id;
-    private Point firstPoint;
-    private Point secondPoint;
-    private Point thirdPoint;
-    private Point fourthPoint;
+    private Point first;
+    private Point second;
+    private Point third;
+    private Point fourth;
 
-    public Tetragon(long id, Point firstPoint, Point secondPoint, Point thirdPoint, Point fourthPoint) {
+    public Tetragon(long id, Point first, Point second, Point third, Point fourth) {
         this.id = id;
-        this.firstPoint = firstPoint;
-        this.secondPoint = secondPoint;
-        this.thirdPoint = thirdPoint;
-        this.fourthPoint = fourthPoint;
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
     }
 
     public long getId() {
         return id;
     }
 
-    public Point getFirstPoint() {
-        return firstPoint;
+    public Point getFirst() {
+        return first;
     }
 
-    public void setFirstPoint(Point firstPoint) {
-        this.firstPoint = firstPoint;
+    public void setFirst(Point first) {
+        this.first = first;
     }
 
-    public Point getSecondPoint() {
-        return secondPoint;
+    public Point getSecond() {
+        return second;
     }
 
-    public void setSecondPoint(Point secondPoint) {
-        this.secondPoint = secondPoint;
+    public void setSecond(Point second) {
+        this.second = second;
     }
 
-    public Point getThirdPoint() {
-        return thirdPoint;
+    public Point getThird() {
+        return third;
     }
 
-    public void setThirdPoint(Point thirdPoint) {
-        this.thirdPoint = thirdPoint;
+    public void setThird(Point third) {
+        this.third = third;
     }
 
-    public Point getFourthPoint() {
-        return fourthPoint;
+    public Point getFourth() {
+        return fourth;
     }
 
-    public void setFourthPoint(Point fourthPoint) {
-        this.fourthPoint = fourthPoint;
+    public void setFourth(Point fourth) {
+        this.fourth = fourth;
     }
 
     @Override
@@ -62,8 +62,8 @@ public class Tetragon {
 
         Tetragon tetragon = (Tetragon) object;
 
-        return (tetragon.getFirstPoint().equals(this.getFirstPoint())) && (tetragon.getSecondPoint().equals(this.getSecondPoint())) &&
-                (tetragon.getThirdPoint().equals(this.getThirdPoint()) && (tetragon.getFourthPoint().equals(this.getFourthPoint())));
+        return (tetragon.getFirst().equals(this.getFirst())) && (tetragon.getSecond().equals(this.getSecond())) &&
+                (tetragon.getThird().equals(this.getThird()) && (tetragon.getFourth().equals(this.getFourth())));
     }
 
     @Override
@@ -72,17 +72,17 @@ public class Tetragon {
         int prime = 31;
 
         result = result * prime + (int) id;
-        result = result * prime + firstPoint.hashCode();
-        result = result * prime + secondPoint.hashCode();
-        result = result * prime + thirdPoint.hashCode();
-        result = result * prime + fourthPoint.hashCode();
+        result = result * prime + first.hashCode();
+        result = result * prime + second.hashCode();
+        result = result * prime + third.hashCode();
+        result = result * prime + fourth.hashCode();
 
         return result;
     }
 
     @Override
     public String toString() {
-        return firstPoint.getX() + " " + firstPoint.getY() + " " + secondPoint.getX() + " " + secondPoint.getY() + " " +
-                "" + thirdPoint.getX() + " " + thirdPoint.getY() + " " + fourthPoint.getX() + " " + fourthPoint.getY();
+        return first.getX() + " " + first.getY() + " " + second.getX() + " " + second.getY() + " " +
+                "" + third.getX() + " " + third.getY() + " " + fourth.getX() + " " + fourth.getY();
     }
 }

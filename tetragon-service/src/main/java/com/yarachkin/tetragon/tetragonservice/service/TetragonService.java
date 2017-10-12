@@ -10,14 +10,13 @@ import java.util.Optional;
 
 public interface TetragonService {
 
+    List<Tetragon> findAll();
+
     void create(TetragonDto tetragonDto) throws UtilTetragonException, ServiceTetragonException;
 
-    Optional<Tetragon> getById(long id);
+    Optional<Tetragon> findById(long id);
 
     boolean update(long id, TetragonDto tetragonDto) throws ServiceTetragonException;
 
     boolean delete(long id) throws ServiceTetragonException;
-
-    List<Tetragon> getAll();
-
 }

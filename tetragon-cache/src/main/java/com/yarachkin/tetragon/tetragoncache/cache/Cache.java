@@ -41,11 +41,15 @@ public class Cache {
     public boolean update(long id, Tetragon tetragon) {
 
         Optional<Tetragon> tetragonOption = cache.stream()
-                .filter(tetragon1 -> tetragon.getId() == id)
+                .filter(element -> element.getId() == id)
                 .findFirst();
         if (!tetragonOption.isPresent()) {
             return false;
         }
+        tetragonOption.get().setFirst(tetragon.getFirst());
+        tetragonOption.get().setSecond(tetragon.getSecond());
+        tetragonOption.get().setThird(tetragon.getThird());
+        tetragonOption.get().setFourth(tetragon.getFourth());
 
         return true;
     }
@@ -53,7 +57,7 @@ public class Cache {
     public boolean remove(long id) {
 
         Optional<Tetragon> tetragonOptional = cache.stream()
-                .filter(tetragon -> tetragon.getId() == id)
+                .filter(element -> element.getId() == id)
                 .findFirst();
         if (!tetragonOptional.isPresent()) {
             return false;

@@ -11,6 +11,11 @@ import java.util.Optional;
 
 public class TetragonDaoImpl implements TetragonDao {
 
+    @Override
+    public List<Tetragon> findAll() {
+        return Cache.getInstance().getCache();
+    }
+
     public void create(Tetragon tetragon) throws DaoTetragonException {
         try {
             Cache.getInstance().add(tetragon);
@@ -51,10 +56,5 @@ public class TetragonDaoImpl implements TetragonDao {
         } catch (CacheTetragonException e) {
             throw new DaoTetragonException(e.getMessage(), e);
         }
-    }
-
-    @Override
-    public List<Tetragon> findAll() {
-        return Cache.getInstance().getCache();
     }
 }

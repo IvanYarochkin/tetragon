@@ -17,6 +17,13 @@ import java.util.Optional;
 public class TetragonServiceImpl implements TetragonService {
 
     @Override
+    public List<Tetragon> findAll() {
+        TetragonDao tetragonDao = new TetragonDaoImpl();
+
+        return tetragonDao.findAll();
+    }
+
+    @Override
     public void create(TetragonDto tetragonDto) throws ServiceTetragonException {
         try {
             if (TetragonValidator.validate(tetragonDto)) {
@@ -29,7 +36,7 @@ public class TetragonServiceImpl implements TetragonService {
     }
 
     @Override
-    public Optional<Tetragon> getById(long id) {
+    public Optional<Tetragon> findById(long id) {
         TetragonDao tetragonDao = new TetragonDaoImpl();
 
         return tetragonDao.findById(id);
@@ -62,12 +69,5 @@ public class TetragonServiceImpl implements TetragonService {
         } catch (DaoTetragonException e) {
             throw new ServiceTetragonException(e);
         }
-    }
-
-    @Override
-    public List<Tetragon> getAll() {
-        TetragonDao tetragonDao = new TetragonDaoImpl();
-
-        return tetragonDao.findAll();
     }
 }

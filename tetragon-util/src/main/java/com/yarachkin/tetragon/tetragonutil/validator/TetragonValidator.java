@@ -17,10 +17,10 @@ public class TetragonValidator {
             return false;
         }
 
-        if (!(PointValidator.validate(tetragonDto.getFirstPoint())
-                && PointValidator.validate(tetragonDto.getSecondPoint())
-                && PointValidator.validate(tetragonDto.getThirdPoint())
-                && PointValidator.validate(tetragonDto.getFourthPoint()))) {
+        if (!(PointValidator.validate(tetragonDto.getFirst())
+                && PointValidator.validate(tetragonDto.getSecond())
+                && PointValidator.validate(tetragonDto.getThird())
+                && PointValidator.validate(tetragonDto.getFourth()))) {
             return false;
         }
 
@@ -28,22 +28,22 @@ public class TetragonValidator {
     }
 
     public static boolean validateByMoreThenTwoPointsOnLine(TetragonDto tetragonDto) {
-        boolean isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirstPoint(), tetragonDto.getSecondPoint(), tetragonDto.getThirdPoint());
+        boolean isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirst(), tetragonDto.getSecond(), tetragonDto.getThird());
         if (!isMoreThenTwoPointsOnLine) {
             return false;
         }
 
-        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirstPoint(), tetragonDto.getSecondPoint(), tetragonDto.getFourthPoint());
+        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirst(), tetragonDto.getSecond(), tetragonDto.getFourth());
         if (!isMoreThenTwoPointsOnLine) {
             return false;
         }
 
-        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirstPoint(), tetragonDto.getThirdPoint(), tetragonDto.getFourthPoint());
+        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirst(), tetragonDto.getThird(), tetragonDto.getFourth());
         if (!isMoreThenTwoPointsOnLine) {
             return false;
         }
 
-        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getSecondPoint(), tetragonDto.getThirdPoint(), tetragonDto.getFourthPoint());
+        isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getSecond(), tetragonDto.getThird(), tetragonDto.getFourth());
 
         return isMoreThenTwoPointsOnLine;
     }

@@ -19,10 +19,10 @@ public class TetragonConverter {
             return null;
         }
 
-        Point firstPoint = PointConverter.convert(tetragonDto.getFirstPoint());
-        Point secondPoint = PointConverter.convert(tetragonDto.getSecondPoint());
-        Point thirdPoint = PointConverter.convert(tetragonDto.getThirdPoint());
-        Point fourthPoint = PointConverter.convert(tetragonDto.getFourthPoint());
+        Point firstPoint = PointConverter.convert(tetragonDto.getFirst());
+        Point secondPoint = PointConverter.convert(tetragonDto.getSecond());
+        Point thirdPoint = PointConverter.convert(tetragonDto.getThird());
+        Point fourthPoint = PointConverter.convert(tetragonDto.getFourth());
 
         return new Tetragon(IdGenerator.generateId(), firstPoint, secondPoint, thirdPoint, fourthPoint);
     }
@@ -32,17 +32,17 @@ public class TetragonConverter {
             return null;
         }
 
-        if (tetragonDto.getFirstPoint() != null) {
-            tetragon.setFirstPoint(mergePointWithPointDto(tetragon.getFirstPoint(), tetragonDto.getFirstPoint()));
+        if (tetragonDto.getFirst() != null) {
+            tetragon.setFirst(mergePointWithPointDto(tetragon.getFirst(), tetragonDto.getFirst()));
         }
-        if (tetragonDto.getSecondPoint() != null) {
-            tetragon.setSecondPoint(mergePointWithPointDto(tetragon.getSecondPoint(), tetragonDto.getSecondPoint()));
+        if (tetragonDto.getSecond() != null) {
+            tetragon.setSecond(mergePointWithPointDto(tetragon.getSecond(), tetragonDto.getSecond()));
         }
-        if (tetragonDto.getThirdPoint() != null) {
-            tetragon.setThirdPoint(mergePointWithPointDto(tetragon.getThirdPoint(), tetragonDto.getThirdPoint()));
+        if (tetragonDto.getThird() != null) {
+            tetragon.setThird(mergePointWithPointDto(tetragon.getThird(), tetragonDto.getThird()));
         }
-        if (tetragonDto.getFourthPoint() != null) {
-            tetragon.setFourthPoint(mergePointWithPointDto(tetragon.getFourthPoint(), tetragonDto.getFourthPoint()));
+        if (tetragonDto.getFourth() != null) {
+            tetragon.setFourth(mergePointWithPointDto(tetragon.getFourth(), tetragonDto.getFourth()));
         }
         return tetragon;
     }

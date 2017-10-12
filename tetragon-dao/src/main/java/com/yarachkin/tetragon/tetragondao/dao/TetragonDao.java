@@ -9,6 +9,9 @@ import java.util.Optional;
 public interface TetragonDao extends GenericDao<Tetragon> {
 
     @Override
+    List<Tetragon> findAll();
+
+    @Override
     void create(Tetragon tetragon) throws DaoTetragonException;
 
     @Override
@@ -19,7 +22,4 @@ public interface TetragonDao extends GenericDao<Tetragon> {
 
     @Override
     boolean delete(long id) throws DaoTetragonException;
-
-    @Override
-    List<Tetragon> findAll();
 }

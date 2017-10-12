@@ -33,109 +33,109 @@ public class TetragonValidatorTest {
 
     @Test
     public void validateIncorrectFirstPointValuesTest() {
-        tetragonDto.getFirstPoint().setX("1.f3");
-        tetragonDto.getFirstPoint().setY("d2.4");
+        tetragonDto.getFirst().setX("1.f3");
+        tetragonDto.getFirst().setY("d2.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateIncorrectSecondPointValuesTest() {
-        tetragonDto.getSecondPoint().setX("a.f3");
-        tetragonDto.getSecondPoint().setY("2z.4");
+        tetragonDto.getSecond().setX("a.f3");
+        tetragonDto.getSecond().setY("2z.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateIncorrectThirdPointValuesTest() {
-        tetragonDto.getThirdPoint().setX("1a.f3");
-        tetragonDto.getThirdPoint().setY("23z.43");
+        tetragonDto.getThird().setX("1a.f3");
+        tetragonDto.getThird().setY("23z.43");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateIncorrectFourthPointValuesTest() {
-        tetragonDto.getFourthPoint().setX("a33.f3");
-        tetragonDto.getFourthPoint().setY("2z3.4");
+        tetragonDto.getFourth().setX("a33.f3");
+        tetragonDto.getFourth().setY("2z3.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateSamePointValuesTest() {
-        tetragonDto.getFourthPoint().setX("a33.f3");
-        tetragonDto.getFourthPoint().setY("2z3.4");
-        tetragonDto.getSecondPoint().setX("a33.f3");
-        tetragonDto.getSecondPoint().setY("2z3.4");
+        tetragonDto.getFourth().setX("a33.f3");
+        tetragonDto.getFourth().setY("2z3.4");
+        tetragonDto.getSecond().setX("a33.f3");
+        tetragonDto.getSecond().setY("2z3.4");
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateAllSamePointValuesTest() {
-        tetragonDto.getFirstPoint().setX("a33.f3");
-        tetragonDto.getFirstPoint().setY("2z3.4");
-        tetragonDto.getSecondPoint().setX("a33.f3");
-        tetragonDto.getSecondPoint().setY("2z3.4");
-        tetragonDto.getThirdPoint().setX("a33.f3");
-        tetragonDto.getThirdPoint().setY("2z3.4");
-        tetragonDto.getFourthPoint().setX("a33.f3");
-        tetragonDto.getFourthPoint().setY("2z3.4");
+        tetragonDto.getFirst().setX("a33.f3");
+        tetragonDto.getFirst().setY("2z3.4");
+        tetragonDto.getSecond().setX("a33.f3");
+        tetragonDto.getSecond().setY("2z3.4");
+        tetragonDto.getThird().setX("a33.f3");
+        tetragonDto.getThird().setY("2z3.4");
+        tetragonDto.getFourth().setX("a33.f3");
+        tetragonDto.getFourth().setY("2z3.4");
 
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateThreePointsOnLineTest() {
-        tetragonDto.getFirstPoint().setX("1");
-        tetragonDto.getFirstPoint().setY("1");
-        tetragonDto.getSecondPoint().setX("4");
-        tetragonDto.getSecondPoint().setY("4");
-        tetragonDto.getThirdPoint().setX("3");
-        tetragonDto.getThirdPoint().setY("3");
+        tetragonDto.getFirst().setX("1");
+        tetragonDto.getFirst().setY("1");
+        tetragonDto.getSecond().setX("4");
+        tetragonDto.getSecond().setY("4");
+        tetragonDto.getThird().setX("3");
+        tetragonDto.getThird().setY("3");
 
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateThreePointsOnOXTest() {
-        tetragonDto.getSecondPoint().setX("4");
-        tetragonDto.getSecondPoint().setY("0");
-        tetragonDto.getThirdPoint().setX("3");
-        tetragonDto.getThirdPoint().setY("0");
-        tetragonDto.getFourthPoint().setX("1");
-        tetragonDto.getFourthPoint().setY("0");
+        tetragonDto.getSecond().setX("4");
+        tetragonDto.getSecond().setY("0");
+        tetragonDto.getThird().setX("3");
+        tetragonDto.getThird().setY("0");
+        tetragonDto.getFourth().setX("1");
+        tetragonDto.getFourth().setY("0");
 
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateThreePointsOnOYTest() {
-        tetragonDto.getFirstPoint().setX("0");
-        tetragonDto.getFirstPoint().setY("2");
-        tetragonDto.getSecondPoint().setX("0");
-        tetragonDto.getSecondPoint().setY("3");
-        tetragonDto.getFourthPoint().setX("0");
-        tetragonDto.getFourthPoint().setY("8.2");
+        tetragonDto.getFirst().setX("0");
+        tetragonDto.getFirst().setY("2");
+        tetragonDto.getSecond().setX("0");
+        tetragonDto.getSecond().setY("3");
+        tetragonDto.getFourth().setX("0");
+        tetragonDto.getFourth().setY("8.2");
 
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateThreePointsOnLineWithIncorrectPointValuesTest() {
-        tetragonDto.getFirstPoint().setX("1.2d");
-        tetragonDto.getFirstPoint().setY("d2.3");
+        tetragonDto.getFirst().setX("1.2d");
+        tetragonDto.getFirst().setY("d2.3");
 
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }
 
     @Test
     public void validateFourPointsOnLineTest() {
-        tetragonDto.getFirstPoint().setX("1");
-        tetragonDto.getFirstPoint().setY("1");
-        tetragonDto.getSecondPoint().setX("4");
-        tetragonDto.getSecondPoint().setY("4");
-        tetragonDto.getThirdPoint().setX("3");
-        tetragonDto.getThirdPoint().setY("3");
-        tetragonDto.getFourthPoint().setX("2");
-        tetragonDto.getFourthPoint().setY("2");
+        tetragonDto.getFirst().setX("1");
+        tetragonDto.getFirst().setY("1");
+        tetragonDto.getSecond().setX("4");
+        tetragonDto.getSecond().setY("4");
+        tetragonDto.getThird().setX("3");
+        tetragonDto.getThird().setY("3");
+        tetragonDto.getFourth().setX("2");
+        tetragonDto.getFourth().setY("2");
 
         assertEquals(TetragonValidator.validate(tetragonDto), false);
     }

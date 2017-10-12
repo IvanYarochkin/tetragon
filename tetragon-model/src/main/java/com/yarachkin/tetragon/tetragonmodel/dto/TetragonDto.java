@@ -1,48 +1,48 @@
 package com.yarachkin.tetragon.tetragonmodel.dto;
 
 public class TetragonDto {
-    private PointDto firstPoint;
-    private PointDto secondPoint;
-    private PointDto thirdPoint;
-    private PointDto fourthPoint;
+    private PointDto first;
+    private PointDto second;
+    private PointDto third;
+    private PointDto fourth;
 
-    public TetragonDto(PointDto firstPoint, PointDto secondPoint, PointDto thirdPoint, PointDto fourthPoint) {
-        this.firstPoint = firstPoint;
-        this.secondPoint = secondPoint;
-        this.thirdPoint = thirdPoint;
-        this.fourthPoint = fourthPoint;
+    public TetragonDto(PointDto first, PointDto second, PointDto third, PointDto fourth) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
     }
 
-    public PointDto getFirstPoint() {
-        return firstPoint;
+    public PointDto getFirst() {
+        return first;
     }
 
-    public void setFirstPoint(PointDto firstPoint) {
-        this.firstPoint = firstPoint;
+    public void setFirst(PointDto first) {
+        this.first = first;
     }
 
-    public PointDto getSecondPoint() {
-        return secondPoint;
+    public PointDto getSecond() {
+        return second;
     }
 
-    public void setSecondPoint(PointDto secondPoint) {
-        this.secondPoint = secondPoint;
+    public void setSecond(PointDto second) {
+        this.second = second;
     }
 
-    public PointDto getThirdPoint() {
-        return thirdPoint;
+    public PointDto getThird() {
+        return third;
     }
 
-    public void setThirdPoint(PointDto thirdPoint) {
-        this.thirdPoint = thirdPoint;
+    public void setThird(PointDto third) {
+        this.third = third;
     }
 
-    public PointDto getFourthPoint() {
-        return fourthPoint;
+    public PointDto getFourth() {
+        return fourth;
     }
 
-    public void setFourthPoint(PointDto fourthPoint) {
-        this.fourthPoint = fourthPoint;
+    public void setFourth(PointDto fourth) {
+        this.fourth = fourth;
     }
 
     @Override
@@ -56,16 +56,16 @@ public class TetragonDto {
 
         TetragonDto that = (TetragonDto) o;
 
-        if (firstPoint != null ? !firstPoint.equals(that.firstPoint) : that.firstPoint != null) {
+        if (first != null ? !first.equals(that.first) : that.first != null) {
             return false;
         }
-        if (secondPoint != null ? !secondPoint.equals(that.secondPoint) : that.secondPoint != null) {
+        if (second != null ? !second.equals(that.second) : that.second != null) {
             return false;
         }
-        if (thirdPoint != null ? !thirdPoint.equals(that.thirdPoint) : that.thirdPoint != null) {
+        if (third != null ? !third.equals(that.third) : that.third != null) {
             return false;
         }
-        return fourthPoint != null ? fourthPoint.equals(that.fourthPoint) : that.fourthPoint == null;
+        return fourth != null ? fourth.equals(that.fourth) : that.fourth == null;
     }
 
     @Override
@@ -73,17 +73,17 @@ public class TetragonDto {
         int result = 1;
         int prime = 31;
 
-        result = result * prime + (firstPoint != null ? firstPoint.hashCode() : 0);
-        result = result * prime + (secondPoint != null ? secondPoint.hashCode() : 0);
-        result = result * prime + (thirdPoint != null ? thirdPoint.hashCode() : 0);
-        result = result * prime + (fourthPoint != null ? fourthPoint.hashCode() : 0);
+        result = result * prime + (first != null ? first.hashCode() : 0);
+        result = result * prime + (second != null ? second.hashCode() : 0);
+        result = result * prime + (third != null ? third.hashCode() : 0);
+        result = result * prime + (fourth != null ? fourth.hashCode() : 0);
 
         return result;
     }
 
     @Override
     public String toString() {
-        return firstPoint.getX() + " " + firstPoint.getY() + " " + secondPoint.getX() + " " + secondPoint.getY() + " " +
-                "" + thirdPoint.getX() + " " + thirdPoint.getY() + " " + fourthPoint.getX() + " " + fourthPoint.getY();
+        return first.getX() + " " + first.getY() + " " + second.getX() + " " + second.getY() + " " +
+                "" + third.getX() + " " + third.getY() + " " + fourth.getX() + " " + fourth.getY();
     }
 }

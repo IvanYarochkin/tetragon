@@ -46,33 +46,33 @@ public class TetragonConverterTest {
 
     @Test
     public void convertWithOneParameterAndPointNegativeValuesTest() throws UtilTetragonException {
-        tetragonDto.getFirstPoint().setX("-4.4");
-        tetragonDto.getFirstPoint().setY("-6.3");
-        tetragon.getFirstPoint().setX(-4.4);
-        tetragon.getFirstPoint().setY(-6.3);
+        tetragonDto.getFirst().setX("-4.4");
+        tetragonDto.getFirst().setY("-6.3");
+        tetragon.getFirst().setX(-4.4);
+        tetragon.getFirst().setY(-6.3);
 
         assertEquals(TetragonConverter.convert(tetragonDto), tetragon);
     }
 
     @Test
     public void convertWithOneParameterAndPointZeroValuesTest() throws UtilTetragonException {
-        tetragonDto.getFirstPoint().setX("0");
-        tetragonDto.getFirstPoint().setY("0");
-        tetragonDto.getSecondPoint().setX("0");
-        tetragonDto.getSecondPoint().setY("0");
-        tetragonDto.getThirdPoint().setX("0");
-        tetragonDto.getThirdPoint().setY("0");
-        tetragonDto.getFourthPoint().setX("0");
-        tetragonDto.getFourthPoint().setY("0");
+        tetragonDto.getFirst().setX("0");
+        tetragonDto.getFirst().setY("0");
+        tetragonDto.getSecond().setX("0");
+        tetragonDto.getSecond().setY("0");
+        tetragonDto.getThird().setX("0");
+        tetragonDto.getThird().setY("0");
+        tetragonDto.getFourth().setX("0");
+        tetragonDto.getFourth().setY("0");
 
-        tetragon.getFirstPoint().setX(0);
-        tetragon.getFirstPoint().setY(0);
-        tetragon.getSecondPoint().setX(0);
-        tetragon.getSecondPoint().setY(0);
-        tetragon.getThirdPoint().setX(0);
-        tetragon.getThirdPoint().setY(0);
-        tetragon.getFourthPoint().setX(0);
-        tetragon.getFourthPoint().setY(0);
+        tetragon.getFirst().setX(0);
+        tetragon.getFirst().setY(0);
+        tetragon.getSecond().setX(0);
+        tetragon.getSecond().setY(0);
+        tetragon.getThird().setX(0);
+        tetragon.getThird().setY(0);
+        tetragon.getFourth().setX(0);
+        tetragon.getFourth().setY(0);
 
         assertEquals(TetragonConverter.convert(tetragonDto), tetragon);
     }
@@ -84,50 +84,66 @@ public class TetragonConverterTest {
 
     @Test
     public void convertWithTwoParametersTest() throws UtilTetragonException {
-        tetragonDto.getFirstPoint().setX("22.2");
-        tetragonDto.getFirstPoint().setY("33.3");
-        resultTetragon.getFirstPoint().setX(22.2);
-        resultTetragon.getFirstPoint().setY(33.3);
+        tetragonDto.getFirst().setX("22.2");
+        tetragonDto.getFirst().setY("33.3");
+        resultTetragon.getFirst().setX(22.2);
+        resultTetragon.getFirst().setY(33.3);
         assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
     }
 
     @Test
     public void convertWithTwoParametersWithNullFirstPointValueTest() throws UtilTetragonException {
-        tetragonDto.setFirstPoint(null);
-        tetragonDto.getSecondPoint().setX("2.5");
-        tetragonDto.getSecondPoint().setY("4.5");
-        resultTetragon.getSecondPoint().setX(2.5);
-        resultTetragon.getSecondPoint().setY(4.5);
+        tetragonDto.setFirst(null);
+        tetragonDto.getSecond().setX("2.5");
+        tetragonDto.getSecond().setY("4.5");
+        resultTetragon.getSecond().setX(2.5);
+        resultTetragon.getSecond().setY(4.5);
         assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
     }
 
     @Test
     public void convertWithTwoParametersWithNullSecondPointValueTest() throws UtilTetragonException {
-        tetragonDto.setSecondPoint(null);
-        tetragonDto.getFirstPoint().setX("22.2");
-        tetragonDto.getFirstPoint().setY("33.3");
-        resultTetragon.getFirstPoint().setX(22.2);
-        resultTetragon.getFirstPoint().setY(33.3);
+        tetragonDto.setSecond(null);
+        tetragonDto.getFirst().setX("22.2");
+        tetragonDto.getFirst().setY("33.3");
+        resultTetragon.getFirst().setX(22.2);
+        resultTetragon.getFirst().setY(33.3);
         assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
     }
 
     @Test
     public void convertWithTwoParametersWithNullThirdPointValueTest() throws UtilTetragonException {
-        tetragonDto.setThirdPoint(null);
-        tetragonDto.getSecondPoint().setX("7");
-        tetragonDto.getSecondPoint().setY("6");
-        resultTetragon.getSecondPoint().setX(7.0);
-        resultTetragon.getSecondPoint().setY(6.0);
+        tetragonDto.setThird(null);
+        tetragonDto.getSecond().setX("7");
+        tetragonDto.getSecond().setY("6");
+        resultTetragon.getSecond().setX(7.0);
+        resultTetragon.getSecond().setY(6.0);
         assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
     }
 
     @Test
     public void convertWithTwoParametersWithNullFourthPointValueTest() throws UtilTetragonException {
-        tetragonDto.setFourthPoint(null);
-        tetragonDto.getSecondPoint().setX("4.3");
-        tetragonDto.getSecondPoint().setY("4.8");
-        resultTetragon.getSecondPoint().setX(4.3);
-        resultTetragon.getSecondPoint().setY(4.8);
+        tetragonDto.setFourth(null);
+        tetragonDto.getSecond().setX("4.3");
+        tetragonDto.getSecond().setY("4.8");
+        resultTetragon.getSecond().setX(4.3);
+        resultTetragon.getSecond().setY(4.8);
+        assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
+    }
+
+    @Test
+    public void convertWithTwoParametersWithNullXValueTest() throws UtilTetragonException {
+        tetragonDto.getFourth().setX(null);
+        tetragon.getFourth().setX(333);
+        resultTetragon.getFourth().setX(333);
+        assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
+    }
+
+    @Test
+    public void convertWithTwoParametersWithNullYValueTest() throws UtilTetragonException {
+        tetragonDto.getFirst().setY(null);
+        tetragon.getFirst().setY(34.4);
+        resultTetragon.getFirst().setY(34.4);
         assertEquals(TetragonConverter.convert(tetragon, tetragonDto), resultTetragon);
     }
 
