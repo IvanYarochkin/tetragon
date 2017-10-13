@@ -3,12 +3,17 @@ package com.yarachkin.tetragon.tetragoncache.cache;
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import com.yarachkin.tetragon.tetragoncache.writer.Writer;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class Cache {
+
+    private static final Logger LOGGER = LogManager.getRootLogger();
 
     private List<Tetragon> cache;
 
@@ -35,7 +40,7 @@ public class Cache {
             try {
                 cloneCache.add(tetragon.clone());
             } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
+                LOGGER.log(Level.ERROR, "Can't create clone object.");
             }
         });
 
