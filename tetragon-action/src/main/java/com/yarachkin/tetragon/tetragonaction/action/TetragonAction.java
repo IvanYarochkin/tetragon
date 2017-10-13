@@ -17,11 +17,22 @@ public class TetragonAction {
         return firstDistance + secondDistance + thirdDistance + fourthDistance;
     }
 
+    public static double calculateArea(Tetragon tetragon) {
+        double firstDistance = calculateDistanceBetweenPoints(tetragon.getFirst(), tetragon.getSecond());
+        double secondDistance = calculateDistanceBetweenPoints(tetragon.getSecond(), tetragon.getThird());
+        double thirdDistance = calculateDistanceBetweenPoints(tetragon.getThird(), tetragon.getFourth());
+        double fourthDistance = calculateDistanceBetweenPoints(tetragon.getFourth(), tetragon.getFirst());
+
+        double halfPerimeter = (firstDistance + secondDistance + thirdDistance + fourthDistance) / 2;
+
+        return Math.sqrt((halfPerimeter - firstDistance) * (halfPerimeter - secondDistance)
+                * (halfPerimeter - thirdDistance) * (halfPerimeter - fourthDistance));
+    }
+
     private static double calculateDistanceBetweenPoints(Point first, Point second) {
         double oxDistant = first.getX() - second.getX();
         double oyDistant = first.getY() - second.getY();
 
         return Math.hypot(oxDistant, oyDistant);
-
     }
 }

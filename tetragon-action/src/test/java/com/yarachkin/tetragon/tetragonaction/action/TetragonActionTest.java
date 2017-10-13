@@ -54,4 +54,38 @@ public class TetragonActionTest {
         assertEquals(TetragonAction.calculatePerimeter(tetragon), 20.0);
     }
 
+    @Test
+    public void calculateAreaTest() {
+        assertEquals(TetragonAction.calculateArea(tetragon), 1.0);
+    }
+
+    @Test
+    public void calculateRotatedTetragonAreaTest() {
+        tetragon.getFirst().setX(3);
+        tetragon.getFirst().setY(1);
+        tetragon.getSecond().setX(1);
+        tetragon.getSecond().setY(3);
+        tetragon.getThird().setX(3);
+        tetragon.getThird().setY(5);
+        tetragon.getFourth().setX(5);
+        tetragon.getFourth().setY(3);
+
+        assertEquals(TetragonAction.calculateArea(tetragon), 8.0);
+    }
+
+    @Test
+    public void calculateRectangleAreaTest() {
+        tetragon.getFirst().setX(1);
+        tetragon.getFirst().setY(1);
+        tetragon.getSecond().setX(1);
+        tetragon.getSecond().setY(2);
+        tetragon.getThird().setX(10);
+        tetragon.getThird().setY(2);
+        tetragon.getFourth().setX(10);
+        tetragon.getFourth().setY(1);
+
+        assertEquals(TetragonAction.calculateArea(tetragon), 9.0);
+    }
+
+
 }
