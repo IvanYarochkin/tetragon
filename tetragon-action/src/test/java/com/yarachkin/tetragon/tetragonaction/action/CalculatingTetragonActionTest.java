@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class TetragonCalculatingActionTest {
+public class CalculatingTetragonActionTest {
     private Tetragon tetragon;
 
     @BeforeMethod
@@ -23,7 +23,7 @@ public class TetragonCalculatingActionTest {
 
     @Test
     public void calculatePerimeterTest() {
-        assertEquals(TetragonCalculatingAction.calculatePerimeter(tetragon), 4.0);
+        assertEquals(CalculatingTetragonAction.calculatePerimeter(tetragon), 4.0);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TetragonCalculatingActionTest {
         tetragon.getFourth().setX(5);
         tetragon.getFourth().setY(3);
 
-        assertEquals(TetragonCalculatingAction.calculatePerimeter(tetragon), 4 * Math.sqrt(8));
+        assertEquals(CalculatingTetragonAction.calculatePerimeter(tetragon), 4 * Math.sqrt(8));
     }
 
     @Test
@@ -51,12 +51,12 @@ public class TetragonCalculatingActionTest {
         tetragon.getFourth().setX(10);
         tetragon.getFourth().setY(1);
 
-        assertEquals(TetragonCalculatingAction.calculatePerimeter(tetragon), 20.0);
+        assertEquals(CalculatingTetragonAction.calculatePerimeter(tetragon), 20.0);
     }
 
     @Test
     public void calculateAreaTest() {
-        assertEquals(TetragonCalculatingAction.calculateArea(tetragon), 1.0);
+        assertEquals(CalculatingTetragonAction.calculateArea(tetragon), 1.0, 0.000000001);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class TetragonCalculatingActionTest {
         tetragon.getFourth().setX(5);
         tetragon.getFourth().setY(3);
 
-        assertEquals(TetragonCalculatingAction.calculateArea(tetragon), 8.0);
+        assertEquals(CalculatingTetragonAction.calculateArea(tetragon), 8.0, 0.000000001);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class TetragonCalculatingActionTest {
         tetragon.getFourth().setX(10);
         tetragon.getFourth().setY(1);
 
-        assertEquals(TetragonCalculatingAction.calculateArea(tetragon), 9.0);
+        assertEquals(CalculatingTetragonAction.calculateArea(tetragon), 9.0, 0.000000001);
     }
 
 
