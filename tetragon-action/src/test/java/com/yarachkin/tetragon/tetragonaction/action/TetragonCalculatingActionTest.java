@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
-public class TetragonActionTest {
+public class TetragonCalculatingActionTest {
     private Tetragon tetragon;
 
     @BeforeMethod
@@ -23,7 +23,7 @@ public class TetragonActionTest {
 
     @Test
     public void calculatePerimeterTest() {
-        assertEquals(TetragonAction.calculatePerimeter(tetragon), 4.0);
+        assertEquals(TetragonCalculatingAction.calculatePerimeter(tetragon), 4.0);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TetragonActionTest {
         tetragon.getFourth().setX(5);
         tetragon.getFourth().setY(3);
 
-        assertEquals(TetragonAction.calculatePerimeter(tetragon), 4 * Math.sqrt(8));
+        assertEquals(TetragonCalculatingAction.calculatePerimeter(tetragon), 4 * Math.sqrt(8));
     }
 
     @Test
@@ -51,12 +51,12 @@ public class TetragonActionTest {
         tetragon.getFourth().setX(10);
         tetragon.getFourth().setY(1);
 
-        assertEquals(TetragonAction.calculatePerimeter(tetragon), 20.0);
+        assertEquals(TetragonCalculatingAction.calculatePerimeter(tetragon), 20.0);
     }
 
     @Test
     public void calculateAreaTest() {
-        assertEquals(TetragonAction.calculateArea(tetragon), 1.0);
+        assertEquals(TetragonCalculatingAction.calculateArea(tetragon), 1.0);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class TetragonActionTest {
         tetragon.getFourth().setX(5);
         tetragon.getFourth().setY(3);
 
-        assertEquals(TetragonAction.calculateArea(tetragon), 8.0);
+        assertEquals(TetragonCalculatingAction.calculateArea(tetragon), 8.0);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class TetragonActionTest {
         tetragon.getFourth().setX(10);
         tetragon.getFourth().setY(1);
 
-        assertEquals(TetragonAction.calculateArea(tetragon), 9.0);
+        assertEquals(TetragonCalculatingAction.calculateArea(tetragon), 9.0);
     }
 
 

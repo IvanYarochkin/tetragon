@@ -3,8 +3,8 @@ package com.yarachkin.tetragon.tetragonaction.action;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 
-public class TetragonAction {
-    private TetragonAction() {
+public class TetragonCalculatingAction {
+    private TetragonCalculatingAction() {
 
     }
 
@@ -29,7 +29,7 @@ public class TetragonAction {
                 * (halfPerimeter - thirdDistance) * (halfPerimeter - fourthDistance));
     }
 
-    private static double calculateDistanceBetweenPoints(Point first, Point second) {
+    public static double calculateDistanceBetweenPoints(Point first, Point second) {
         double oxDistant = first.getX() - second.getX();
         double oyDistant = first.getY() - second.getY();
 
