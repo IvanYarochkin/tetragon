@@ -1,20 +1,14 @@
 package com.yarachkin.tetragon.tetragoncache.reader;
 
-import com.yarachkin.tetragon.tetragoncache.cache.Cache;
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
-import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
-import com.yarachkin.tetragon.tetragonutil.converter.TetragonConverter;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
-import com.yarachkin.tetragon.tetragonutil.parser.LineParser;
-import com.yarachkin.tetragon.tetragonutil.validator.TetragonValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,18 +22,8 @@ public class Reader {
     private static final String FILE_NAME = "file.name";
     private static final String FILE_MESSAGE = "File ";
 
-    private String filePath;
-
     private Reader() throws CacheTetragonException {
-        try {
-            Properties properties = new Properties();
-            properties.load(Reader.class.getResourceAsStream(FILE_PROPERTIES));
 
-            filePath = properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
-
-        } catch (IOException e) {
-            throw new CacheTetragonException("Unable to open " + FILE_PROPERTIES, e);
-        }
     }
 
     private static class SingletonHolder {
@@ -59,31 +43,43 @@ public class Reader {
         return SingletonHolder.INSTANCE;
     }
 
-    public void readFromFile() throws CacheTetragonException {
+    public String acquireFilePath() throws CacheTetragonException {
+        try {
+            Properties properties = new Properties();
+            properties.load(Reader.class.getResourceAsStream(FILE_PROPERTIES));
+
+            return properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
+        } catch (IOException e) {
+            throw new CacheTetragonException("Unable to open " + FILE_PROPERTIES, e);
+        }
+    }
+
+
+    public List<String> readFromFile(String filePath) throws CacheTetragonException {
+        createFileIfNotExists();
         try {
             List<String> lines = new ArrayList<>();
 
             Files.lines(Paths.get(filePath))
                     .filter(Strings::isNotEmpty)
                     .forEach(lines::add);
-
-            lines.forEach(this::addToCache);
-
-        } catch (FileNotFoundException e) {
-            throw new CacheTetragonException(FILE_MESSAGE + filePath + "did not find.", e);
+            return lines;
         } catch (IOException e) {
             throw new CacheTetragonException("Read error", e);
         }
     }
 
-    private void addToCache(String line) {
+    public void createFileIfNotExists() throws CacheTetragonException {
         try {
-            TetragonDto tetragonDto = LineParser.parse(line, "\\s");
-            if (TetragonValidator.validate(tetragonDto)) {
-                Cache.getInstance().add(TetragonConverter.convert(tetragonDto));
+            Path cachePath = Paths.get(acquireFilePath());
+
+            if (Files.notExists(cachePath)) {
+                LOGGER.log(Level.INFO, FILE_MESSAGE + acquireFilePath() + " does not exist.");
+                Files.createFile(cachePath);
+                LOGGER.log(Level.INFO, FILE_MESSAGE + acquireFilePath() + " created.");
             }
-        } catch (UtilTetragonException e) {
-            LOGGER.log(Level.ERROR, e.getMessage());
+        } catch (IOException e) {
+            throw new CacheTetragonException("Unable to create " + acquireFilePath(), e);
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.yarachkin.tetragon.tetragoncache.cache;
 
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
+import com.yarachkin.tetragon.tetragoncache.reader.Reader;
 import com.yarachkin.tetragon.tetragoncache.writer.Writer;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonutil.parser.LineParser;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,16 +19,21 @@ public class Cache {
 
     private List<Tetragon> cache;
 
-    private Cache() {
-        cache = new ArrayList<>();
+    private Cache() throws CacheTetragonException {
+        cache = LineParser.parse(Reader.getInstance().readFromFile(Reader.getInstance().acquireFilePath()), "\\s");
     }
 
     private static class SingletonHolder {
         private static final Cache INSTANCE;
 
         static {
-            INSTANCE = new Cache();
+            try {
+                INSTANCE = new Cache();
+            } catch (CacheTetragonException e) {
+                throw new ExceptionInInitializerError(e);
+            }
         }
+
     }
 
     public static Cache getInstance() {
@@ -60,10 +67,11 @@ public class Cache {
         if (!tetragonOption.isPresent()) {
             return false;
         }
-        tetragonOption.get().setFirst(tetragon.getFirst());
-        tetragonOption.get().setSecond(tetragon.getSecond());
-        tetragonOption.get().setThird(tetragon.getThird());
-        tetragonOption.get().setFourth(tetragon.getFourth());
+        Tetragon foundTetragon = tetragonOption.get();
+        foundTetragon.setFirst(tetragon.getFirst());
+        foundTetragon.setSecond(tetragon.getSecond());
+        foundTetragon.setThird(tetragon.getThird());
+        foundTetragon.setFourth(tetragon.getFourth());
 
         return true;
     }
@@ -83,6 +91,4 @@ public class Cache {
     public void flush() throws CacheTetragonException {
         Writer.getInstance().write();
     }
-
-
 }

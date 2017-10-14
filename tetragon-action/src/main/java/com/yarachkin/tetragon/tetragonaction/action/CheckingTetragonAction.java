@@ -4,7 +4,7 @@ import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 
 public class CheckingTetragonAction {
 
-    private CheckingTetragonAction(){
+    private CheckingTetragonAction() {
 
     }
 
@@ -25,7 +25,7 @@ public class CheckingTetragonAction {
                 < CalculatingTetragonAction.calculateArea(tetragon);
     }
 
-    public static boolean isSquare(Tetragon tetragon){
+    public static boolean isSquare(Tetragon tetragon) {
         double firstSide = CalculatingTetragonAction.calculateDistanceBetweenPoints(tetragon.getFirst(), tetragon.getSecond());
         double secondSide = CalculatingTetragonAction.calculateDistanceBetweenPoints(tetragon.getSecond(), tetragon.getThird());
         double thirdSide = CalculatingTetragonAction.calculateDistanceBetweenPoints(tetragon.getThird(), tetragon.getFourth());
@@ -35,7 +35,7 @@ public class CheckingTetragonAction {
         double secondDiagonal = CalculatingTetragonAction.calculateDistanceBetweenPoints(tetragon.getSecond(), tetragon.getFourth());
 
 
-        if (firstDiagonal != secondDiagonal){
+        if (firstDiagonal != secondDiagonal) {
             return false;
         }
 

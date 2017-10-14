@@ -6,7 +6,7 @@ import static java.lang.Math.sqrt;
 
 public class CalculatingTriangleAction {
 
-    private CalculatingTriangleAction(){
+    private CalculatingTriangleAction() {
 
     }
 

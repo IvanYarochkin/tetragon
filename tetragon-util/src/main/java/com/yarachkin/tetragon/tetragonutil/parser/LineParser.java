@@ -2,15 +2,41 @@ package com.yarachkin.tetragon.tetragonutil.parser;
 
 import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
+import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonutil.converter.TetragonConverter;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
+import com.yarachkin.tetragon.tetragonutil.validator.TetragonValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LineParser {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private LineParser() {
 
     }
 
-    public static TetragonDto parse(String line, String pattern) throws UtilTetragonException {
+    public static List<Tetragon> parse(List<String> lines, String pattern) {
+        List<Tetragon> tetragons = new ArrayList<>();
+        for (String line : lines) {
+            try {
+                TetragonDto tetragonDto = parseLine(line, pattern);
+                if (TetragonValidator.validate(tetragonDto)) {
+                    tetragons.add(TetragonConverter.convert(tetragonDto));
+                }
+            } catch (UtilTetragonException e) {
+                LOGGER.log(Level.INFO, e.getMessage());
+            }
+        }
+        return tetragons;
+    }
+
+    public static TetragonDto parseLine(String line, String pattern) throws UtilTetragonException {
         String[] splittedLine = line.split(pattern);
 
         if (splittedLine.length != 8) {
