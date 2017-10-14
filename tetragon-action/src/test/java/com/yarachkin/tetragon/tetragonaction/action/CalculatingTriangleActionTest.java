@@ -18,8 +18,8 @@ public class CalculatingTriangleActionTest {
     }
 
     @Test
-    public void calculateAreaActionTest() {
-        assertEquals(CalculatingTriangleAction.calculateAreaAction(first, second, third), 2.0, 0.000000001);
+    public void calculateAreaTest() {
+        assertEquals(CalculatingTriangleAction.calculateArea(first, second, third), 2.0, 0.000000001);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class CalculatingTriangleActionTest {
         third.setX(2);
         third.setY(2);
 
-        assertEquals(CalculatingTriangleAction.calculateAreaAction(first, second, third), 4, 0.000000001);
+        assertEquals(CalculatingTriangleAction.calculateArea(first, second, third), 4, 0.000000001);
     }
 
 }
