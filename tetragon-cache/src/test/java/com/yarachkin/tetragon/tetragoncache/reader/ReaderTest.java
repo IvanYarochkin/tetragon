@@ -24,7 +24,6 @@ public class ReaderTest {
 
     private String filePath;
     List<String> lines;
-    private static final Logger LOGGER = LogManager.getRootLogger();
 
 
     @BeforeMethod

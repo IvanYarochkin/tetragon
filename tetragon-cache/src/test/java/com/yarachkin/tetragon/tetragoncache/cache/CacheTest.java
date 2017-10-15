@@ -1,18 +1,21 @@
 package com.yarachkin.tetragon.tetragoncache.cache;
 
+import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
+import com.yarachkin.tetragon.tetragoncache.reader.Reader;
+import com.yarachkin.tetragon.tetragoncache.writer.Writer;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.annotations.AfterMethod;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,10 +29,8 @@ import static org.testng.AssertJUnit.assertEquals;
 public class CacheTest {
     private String filePath;
     private List<Tetragon> tetragons;
-    private File file;
-    private static final Logger LOGGER = LogManager.getRootLogger();
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp() throws Exception {
         IdGenerator.setIsTest(true);
         Properties properties = new Properties();
@@ -37,24 +38,21 @@ public class CacheTest {
         FileHelper.getInstance().loadProperties(properties);
         filePath = FileHelper.getInstance().acquireFilePath();
 
-        file = new File(filePath);
-        file.createNewFile();
+        Files.createFile(Paths.get(filePath));
 
-//        Files.createFile(Paths.get(filePath));
-
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
 
         bufferedWriter.write(properties.getProperty("file.data"));
         bufferedWriter.close();
 
         tetragons = new ArrayList<>();
-        tetragons.add(new Tetragon(1,new Point(1,1, 0), new Point(1,2, 3), new Point(1,4, 5), new Point(1,6, 5)));
-        tetragons.add(new Tetragon(1,new Point(1,1, 1), new Point(1,4, 3), new Point(1,9, 8), new Point(1,0, 0)));
+        tetragons.add(new Tetragon(1, new Point(1, 1, 0), new Point(1, 2, 3), new Point(1, 4, 5), new Point(1, 6, 5)));
+        tetragons.add(new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 9, 8), new Point(1, 0, 0)));
     }
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() throws Exception {
-       file.delete();
+        Files.delete(Paths.get(filePath));
         FileHelper.getInstance().setDefaultPropertyPath();
         IdGenerator.setIsTest(true);
     }
@@ -66,10 +64,30 @@ public class CacheTest {
 
     @Test
     public void addTest() {
-        tetragons.add(new Tetragon(1,new Point(1,2, 2.15), new Point(1,3, 3.3), new Point(1,10, 5), new Point(1,3.2, 1)));
-        Cache.getInstance().add(new Tetragon(1,new Point(1,2, 2.15), new Point(1,3, 3.3), new Point(1,10, 5), new Point(1,3.2, 1)));
-        Cache.getInstance().getCache().forEach(System.out::println);
+        tetragons.add(new Tetragon(1, new Point(1, 2, 2.15), new Point(1, 3, 3.3), new Point(1, 10, 5), new Point(1, 3.2, 1)));
+        Cache.getInstance().add(new Tetragon(1, new Point(1, 2, 2.15), new Point(1, 3, 3.3), new Point(1, 10, 5), new Point(1, 3.2, 1)));
         assertEquals(Cache.getInstance().getCache(), tetragons);
     }
 
+    @Test
+    public void removeTest() {
+        Cache.getInstance().remove(1);
+        tetragons.remove(0);
+        assertEquals(Cache.getInstance().getCache(), tetragons);
+    }
+
+    @Test
+    public void updateTest() {
+        Cache.getInstance().update(1, new Tetragon(new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 2, 0), new Point(1, 3, 1)));
+        tetragons.set(0, new Tetragon(new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 2, 0), new Point(1, 3, 1)));
+        assertEquals(Cache.getInstance().getCache(), tetragons);
+    }
+
+    @Test
+    public void flush() throws CacheTetragonException {
+        Writer.getInstance().write(tetragons);
+        List<String> expectedLines = Reader.getInstance().readFromFile();
+        Cache.getInstance().flush();
+        assertEquals(Reader.getInstance().readFromFile(), expectedLines);
+    }
 }
