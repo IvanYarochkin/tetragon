@@ -7,7 +7,7 @@ import static java.lang.Math.hypot;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
-public class CalculatingTetragonAction {
+public final class CalculatingTetragonAction {
 
     private CalculatingTetragonAction() {
 

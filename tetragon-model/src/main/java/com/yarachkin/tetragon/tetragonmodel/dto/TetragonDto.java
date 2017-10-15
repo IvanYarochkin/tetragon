@@ -50,7 +50,7 @@ public class TetragonDto {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof TetragonDto)) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
 

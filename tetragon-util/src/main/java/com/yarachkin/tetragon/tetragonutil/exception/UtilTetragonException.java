@@ -1,6 +1,6 @@
 package com.yarachkin.tetragon.tetragonutil.exception;
 
-public class UtilTetragonException extends Exception {
+public final class UtilTetragonException extends Exception {
     public UtilTetragonException() {
     }
 

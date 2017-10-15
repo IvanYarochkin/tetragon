@@ -2,6 +2,7 @@ package com.yarachkin.tetragon.tetragonutil.parser;
 
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,12 +13,13 @@ import java.util.List;
 import static org.testng.Assert.assertEquals;
 
 public class LineParserTest {
-    List<String> lines;
-    List<Tetragon> tetragons;
+    private List<String> lines;
+    private List<Tetragon> tetragons;
     private String pattern;
 
     @BeforeMethod
     public void setUp() {
+        IdGenerator.setIsTest(true);
         pattern = "\\s";
 
         lines = new ArrayList<>();
@@ -26,11 +28,11 @@ public class LineParserTest {
 
         tetragons = new ArrayList<>();
 
-        Tetragon firstTetragon = new Tetragon(1, new Point(1.3, 2.2), new Point(3.3, 4.4),
-                new Point(4.4, 3.5), new Point(8.4, 5.5));
+        Tetragon firstTetragon = new Tetragon(1, new Point(1, 1.3, 2.2), new Point(1, 3.3, 4.4),
+                new Point(1, 4.4, 3.5), new Point(1, 8.4, 5.5));
 
-        Tetragon secondTetragon = new Tetragon(2, new Point(3.2, 2.2), new Point(1.45, 34),
-                new Point(4, 12), new Point(2, 33));
+        Tetragon secondTetragon = new Tetragon(1, new Point(1, 3.2, 2.2), new Point(1, 1.45, 34),
+                new Point(1, 4, 12), new Point(1, 2, 33));
 
         tetragons.add(firstTetragon);
         tetragons.add(secondTetragon);

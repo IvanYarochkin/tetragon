@@ -25,6 +25,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.yarachkin.tetragon</groupId>
             <artifactId>tetragon-util</artifactId>
         </dependency>

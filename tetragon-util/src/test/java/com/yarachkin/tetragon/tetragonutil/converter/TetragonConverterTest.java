@@ -4,6 +4,7 @@ import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,6 +18,8 @@ public class TetragonConverterTest {
 
     @BeforeMethod
     public void setUp() {
+        IdGenerator.setIsTest(true);
+
         PointDto firstPointDto = new PointDto("1.0", "1.0");
         PointDto secondPointDto = new PointDto("2.0", "2.0");
         PointDto thirdPointDto = new PointDto("3.0", "1.0");
@@ -24,17 +27,17 @@ public class TetragonConverterTest {
 
         tetragonDto = new TetragonDto(firstPointDto, secondPointDto, thirdPointDto, fourthPointDto);
 
-        Point firstPoint = new Point(1.0, 1.0);
-        Point secondPoint = new Point(2.0, 2.0);
-        Point thirdPoint = new Point(3.0, 1.0);
-        Point fourthPoint = new Point(4.0, 2.0);
+        Point firstPoint = new Point(1, 1.0, 1.0);
+        Point secondPoint = new Point(1, 2.0, 2.0);
+        Point thirdPoint = new Point(1, 3.0, 1.0);
+        Point fourthPoint = new Point(1, 4.0, 2.0);
 
         tetragon = new Tetragon(1, firstPoint, secondPoint, thirdPoint, fourthPoint);
 
-        Point resultFirstPoint = new Point(1.0, 1.0);
-        Point resultSecondPoint = new Point(2.0, 2.0);
-        Point resultThirdPoint = new Point(3.0, 1.0);
-        Point resultFourthPoint = new Point(4.0, 2.0);
+        Point resultFirstPoint = new Point(1, 1.0, 1.0);
+        Point resultSecondPoint = new Point(1, 2.0, 2.0);
+        Point resultThirdPoint = new Point(1, 3.0, 1.0);
+        Point resultFourthPoint = new Point(1, 4.0, 2.0);
 
         resultTetragon = new Tetragon(1, resultFirstPoint, resultSecondPoint, resultThirdPoint, resultFourthPoint);
     }

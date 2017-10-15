@@ -3,7 +3,7 @@ package com.yarachkin.tetragon.tetragonutil.common;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringUtil {
+public final class StringUtil {
 
     private static final Pattern DOUBLE_PATTERN = Pattern.compile("-?\\d{1,6}.?\\d{0,6}");
 

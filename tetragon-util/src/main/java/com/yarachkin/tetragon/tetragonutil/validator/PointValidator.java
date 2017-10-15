@@ -3,7 +3,7 @@ package com.yarachkin.tetragon.tetragonutil.validator;
 import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonutil.common.StringUtil;
 
-public class PointValidator {
+public final class PointValidator {
 
     private PointValidator() {
 
