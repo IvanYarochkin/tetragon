@@ -6,7 +6,7 @@ import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonutil.converter.PointConverter;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 
-public class TetragonValidator {
+public final class TetragonValidator {
 
     private TetragonValidator() {
 

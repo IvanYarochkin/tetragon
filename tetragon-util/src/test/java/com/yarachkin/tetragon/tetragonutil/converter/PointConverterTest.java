@@ -15,7 +15,7 @@ public class PointConverterTest {
     @BeforeMethod
     public void setUp() {
         pointDto = new PointDto("1.2", "2.3");
-        point = new Point(1.2, 2.3);
+        point = new Point(1, 1.2, 2.3);
     }
 
     @Test

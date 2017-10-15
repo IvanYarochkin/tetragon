@@ -8,7 +8,7 @@ import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.common.StringUtil;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 
-public class TetragonConverter {
+public final class TetragonConverter {
 
     private TetragonConverter() {
 
@@ -24,7 +24,7 @@ public class TetragonConverter {
         Point thirdPoint = PointConverter.convert(tetragonDto.getThird());
         Point fourthPoint = PointConverter.convert(tetragonDto.getFourth());
 
-        return new Tetragon(IdGenerator.generateId(), firstPoint, secondPoint, thirdPoint, fourthPoint);
+        return new Tetragon(IdGenerator.generateTetragonId(), firstPoint, secondPoint, thirdPoint, fourthPoint);
     }
 
     public static Tetragon convert(Tetragon tetragon, TetragonDto tetragonDto) {

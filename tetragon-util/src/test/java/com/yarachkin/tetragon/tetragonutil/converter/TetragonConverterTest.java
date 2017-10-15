@@ -24,19 +24,19 @@ public class TetragonConverterTest {
 
         tetragonDto = new TetragonDto(firstPointDto, secondPointDto, thirdPointDto, fourthPointDto);
 
-        Point firstPoint = new Point(1.0, 1.0);
-        Point secondPoint = new Point(2.0, 2.0);
-        Point thirdPoint = new Point(3.0, 1.0);
-        Point fourthPoint = new Point(4.0, 2.0);
+        Point firstPoint = new Point(1, 1.0, 1.0);
+        Point secondPoint = new Point(2, 2.0, 2.0);
+        Point thirdPoint = new Point(3, 3.0, 1.0);
+        Point fourthPoint = new Point(4, 4.0, 2.0);
 
         tetragon = new Tetragon(1, firstPoint, secondPoint, thirdPoint, fourthPoint);
 
-        Point resultFirstPoint = new Point(1.0, 1.0);
-        Point resultSecondPoint = new Point(2.0, 2.0);
-        Point resultThirdPoint = new Point(3.0, 1.0);
-        Point resultFourthPoint = new Point(4.0, 2.0);
+        Point resultFirstPoint = new Point(5, 1.0, 1.0);
+        Point resultSecondPoint = new Point(6, 2.0, 2.0);
+        Point resultThirdPoint = new Point(7, 3.0, 1.0);
+        Point resultFourthPoint = new Point(8, 4.0, 2.0);
 
-        resultTetragon = new Tetragon(1, resultFirstPoint, resultSecondPoint, resultThirdPoint, resultFourthPoint);
+        resultTetragon = new Tetragon(2, resultFirstPoint, resultSecondPoint, resultThirdPoint, resultFourthPoint);
     }
 
     @Test

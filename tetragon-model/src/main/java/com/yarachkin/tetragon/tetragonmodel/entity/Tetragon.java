@@ -1,22 +1,28 @@
 package com.yarachkin.tetragon.tetragonmodel.entity;
 
-public class Tetragon implements Cloneable {
-    private long id;
+public class Tetragon extends AbstractEntity implements Cloneable {
     private Point first;
     private Point second;
     private Point third;
     private Point fourth;
 
-    public Tetragon(long id, Point first, Point second, Point third, Point fourth) {
-        this.id = id;
+    public Tetragon() {
+
+    }
+
+    public Tetragon(Point first, Point second, Point third, Point fourth) {
         this.first = first;
         this.second = second;
         this.third = third;
         this.fourth = fourth;
     }
 
-    public long getId() {
-        return id;
+    public Tetragon(long id, Point first, Point second, Point third, Point fourth) {
+        super(id);
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
     }
 
     public Point getFirst() {
@@ -62,7 +68,7 @@ public class Tetragon implements Cloneable {
 
         Tetragon tetragon = (Tetragon) object;
 
-        return (tetragon.getFirst().equals(this.getFirst())) && (tetragon.getSecond().equals(this.getSecond())) &&
+        return (tetragon.getId() == this.getId()) && (tetragon.getFirst().equals(this.getFirst())) && (tetragon.getSecond().equals(this.getSecond())) &&
                 (tetragon.getThird().equals(this.getThird()) && (tetragon.getFourth().equals(this.getFourth())));
     }
 
@@ -71,7 +77,7 @@ public class Tetragon implements Cloneable {
         int result = 1;
         int prime = 31;
 
-        result = result * prime + (int) id;
+        result = result * prime + (int) getId();
         result = result * prime + first.hashCode();
         result = result * prime + second.hashCode();
         result = result * prime + third.hashCode();

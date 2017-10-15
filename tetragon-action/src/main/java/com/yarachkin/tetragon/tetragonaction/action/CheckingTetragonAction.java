@@ -2,7 +2,7 @@ package com.yarachkin.tetragon.tetragonaction.action;
 
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 
-public class CheckingTetragonAction {
+public final class CheckingTetragonAction {
 
     private CheckingTetragonAction() {
 

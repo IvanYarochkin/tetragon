@@ -22,21 +22,12 @@ public class Reader {
     private static final String FILE_NAME = "file.name";
     private static final String FILE_MESSAGE = "File ";
 
-    private Reader() throws CacheTetragonException {
+    private Reader() {
 
     }
 
     private static class SingletonHolder {
-
-        private static final Reader INSTANCE;
-
-        static {
-            try {
-                INSTANCE = new Reader();
-            } catch (CacheTetragonException e) {
-                throw new ExceptionInInitializerError(e);
-            }
-        }
+        private static final Reader INSTANCE = new Reader();
     }
 
     public static Reader getInstance() {
@@ -56,7 +47,7 @@ public class Reader {
 
 
     public List<String> readFromFile(String filePath) throws CacheTetragonException {
-        createFileIfNotExists();
+        createFileIfNotExists(filePath);
         try {
             List<String> lines = new ArrayList<>();
 
@@ -69,9 +60,9 @@ public class Reader {
         }
     }
 
-    public void createFileIfNotExists() throws CacheTetragonException {
+    public void createFileIfNotExists(String filePath) throws CacheTetragonException {
         try {
-            Path cachePath = Paths.get(acquireFilePath());
+            Path cachePath = Paths.get(filePath);
 
             if (Files.notExists(cachePath)) {
                 LOGGER.log(Level.INFO, FILE_MESSAGE + acquireFilePath() + " does not exist.");

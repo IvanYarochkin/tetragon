@@ -4,7 +4,7 @@ import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 
 import static java.lang.Math.sqrt;
 
-public class CalculatingTriangleAction {
+public final class CalculatingTriangleAction {
 
     private CalculatingTriangleAction() {
 

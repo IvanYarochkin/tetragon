@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LineParser {
+public final class LineParser {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
