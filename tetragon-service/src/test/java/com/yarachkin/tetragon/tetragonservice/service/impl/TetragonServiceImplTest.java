@@ -1,11 +1,12 @@
-package com.yarachkin.tetragon.tetragondao.dao.impl;
+package com.yarachkin.tetragon.tetragonservice.service.impl;
 
 import com.yarachkin.tetragon.tetragoncache.cache.Cache;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
-import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
-import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
+import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
+import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.tetragonservice.service.TetragonService;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,19 +21,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 
-import static org.testng.Assert.assertFalse;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class TetragonDaoImplTest {
+public class TetragonServiceImplTest {
     private String filePath;
+    private TetragonService tetragonService;
     private List<Tetragon> tetragons;
-    private TetragonDao tetragonDao;
+    private TetragonDto tetragonDto;
 
     @BeforeClass
     public void setUp() throws Exception {
         IdGenerator.setIsTest(true);
         Properties properties = new Properties();
-        properties.load(TetragonDaoImplTest.class.getResourceAsStream("/file_dao_test.properties"));
+        properties.load(TetragonServiceImpl.class.getResourceAsStream("/file_service_test.properties"));
         FileHelper.getInstance().loadProperties(properties);
         filePath = FileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
@@ -42,11 +43,12 @@ public class TetragonDaoImplTest {
         bufferedWriter.write(properties.getProperty("file.data"));
         bufferedWriter.close();
 
-        tetragonDao = new TetragonDaoImpl();
+        tetragonService = new TetragonServiceImpl();
         tetragons = new ArrayList<>();
 
         tetragons.add(new Tetragon(1, new Point(1, 1, 0), new Point(1, 2, 3), new Point(1, 4, 5), new Point(1, 6, 5)));
         tetragons.add(new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 9, 8), new Point(1, 0, 0)));
+
     }
 
     @AfterClass
@@ -58,36 +60,38 @@ public class TetragonDaoImplTest {
 
     @Test
     public void findAllTest() throws Exception {
-        assertEquals(tetragonDao.findAll(), tetragons);
+        assertEquals(tetragonService.findAll(), tetragons);
     }
 
     @Test
     public void createTest() throws Exception {
+        tetragonService.create(new TetragonDto(new PointDto("1", "1"), new PointDto("4", "3"), new PointDto("9", "8"), new PointDto("0", "0")));
         tetragons.add(new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 9, 8), new Point(1, 0, 0)));
-        tetragonDao.create(new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 9, 8), new Point(1, 0, 0)));
+        assertEquals(Cache.getInstance().getCache(), tetragons);
+    }
+
+    @Test
+    public void createWithIncorrectValuesTest() throws Exception {
+        tetragonService.create(new TetragonDto(new PointDto("1", "1"), new PointDto("4qw", "3"), new PointDto("9", "8r"), new PointDto("0", "0")));
         assertEquals(Cache.getInstance().getCache(), tetragons);
     }
 
     @Test
     public void findByIdTest() throws Exception {
-        assertEquals(tetragonDao.findById(1), Optional.of(tetragons.get(0)));
-    }
+        assertEquals(tetragonService.findById(1), Optional.of(tetragons.get(0)));
 
-    @Test
-    public void findByIdWithNonexistentIdTest() throws DaoTetragonException {
-        assertFalse(tetragonDao.findById(-1).isPresent());
     }
 
     @Test
     public void updateTest() throws Exception {
-        tetragonDao.update(1, new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 2, 0), new Point(1, 3, 1)));
+        tetragonService.update(1, new TetragonDto(new PointDto("1", "1"), new PointDto("4", "3"), new PointDto("2", "0"), new PointDto("3", "1")));
         tetragons.set(0, new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 2, 0), new Point(1, 3, 1)));
         assertEquals(Cache.getInstance().getCache(), tetragons);
     }
 
     @Test
     public void deleteTest() throws Exception {
-        tetragonDao.delete(1);
+        tetragonService.delete(1);
         tetragons.remove(0);
         assertEquals(Cache.getInstance().getCache(), tetragons);
     }
