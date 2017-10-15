@@ -1,6 +1,7 @@
 package com.yarachkin.tetragon.tetragoncache.cache;
 
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
+import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
 import com.yarachkin.tetragon.tetragoncache.reader.Reader;
 import com.yarachkin.tetragon.tetragoncache.writer.Writer;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
@@ -20,8 +21,9 @@ public class Cache {
     private List<Tetragon> cache;
 
     private Cache() throws CacheTetragonException {
+        FileHelper.getInstance();
         Reader reader = Reader.getInstance();
-        cache = LineParser.parse(reader.readFromFile(reader.acquireFilePath()), "\\s");
+        cache = LineParser.parse(reader.readFromFile(), "\\s");
     }
 
     private static class SingletonHolder {

@@ -1,8 +1,9 @@
 package com.yarachkin.tetragon.tetragoncache.reader;
 
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.BufferedWriter;
@@ -19,20 +20,13 @@ import static org.testng.AssertJUnit.assertFalse;
 
 public class ReaderTest {
 
-    private static final String FILE_PROPERTIES = "/file.properties";
-    private static final String FILE_DIRECTORY = "file.path.test";
-    private static final String FILE_NAME = "file.name.test";
-
     private String filePath;
     List<String> lines;
 
-    @BeforeClass
-    public void setUp() throws Exception {
-        Properties properties = new Properties();
-        properties.load(Reader.class.getResourceAsStream(FILE_PROPERTIES));
-
-        filePath = properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
-
+    @BeforeMethod
+    public void setUp() throws CacheTetragonException, IOException {
+        FileHelper.getInstance().setPropertyPath("/file_test.properties");
+        filePath = FileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
 
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
@@ -50,20 +44,20 @@ public class ReaderTest {
         lines.add("8 84 4 7 9 3 6 5 4 7 8 5 2 2");
     }
 
-    @AfterClass
-    public void tearDown() throws IOException {
+    @AfterMethod
+    public void tearDown() throws IOException, CacheTetragonException {
         Files.delete(Paths.get(filePath));
-        Files.delete(Paths.get("src/test/resources/test_created_file.txt"));
+        FileHelper.getInstance().setDefaultPropertyPath();
     }
 
     @Test
     public void readFromFileTest() throws Exception {
-        assertEquals(Reader.getInstance().readFromFile(filePath), lines);
+        assertEquals(Reader.getInstance().readFromFile(), lines);
     }
 
     @Test
     public void createFileIfNotExistsTest() throws CacheTetragonException {
-        Reader.getInstance().createFileIfNotExists("src/test/resources/test_created_file.txt");
-        assertFalse(Files.notExists(Paths.get("src/test/resources/test_created_file.txt")));
+        Reader.getInstance().createFileIfNotExists();
+        assertFalse(Files.notExists(Paths.get(filePath)));
     }
 }

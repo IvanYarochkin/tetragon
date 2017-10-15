@@ -23,6 +23,7 @@
         <log4j.version>2.9.1</log4j.version>
         <tetragon.module.version>1.0-SNAPSHOT</tetragon.module.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+        <directory-maven-plugin.version>0.2</directory-maven-plugin.version>
         <testng.version>6.11</testng.version>
     </properties>
 
@@ -109,6 +110,10 @@
                                 <directory>src/main/resources</directory>
                                 <filtering>true</filtering>
                             </resource>
+                            <resource>
+                                <directory>src/test/resources</directory>
+                                <filtering>true</filtering>
+                            </resource>
                         </resources>
                     </configuration>
                 </plugin>
@@ -123,6 +128,26 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+                <version>${directory-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>directories</id>
+                        <goals>
+                            <goal>highest-basedir</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <property>main.basedir</property>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
