@@ -2,6 +2,8 @@ package com.yarachkin.tetragon.tetragoncache.reader;
 
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -22,19 +24,20 @@ public class ReaderTest {
 
     private String filePath;
     List<String> lines;
+    private static final Logger LOGGER = LogManager.getRootLogger();
+
 
     @BeforeMethod
     public void setUp() throws CacheTetragonException, IOException {
-        FileHelper.getInstance().setPropertyPath("/file_test.properties");
+        Properties properties = new Properties();
+        properties.load(ReaderTest.class.getResourceAsStream("/file_reader_test.properties"));
+        FileHelper.getInstance().loadProperties(properties);
         filePath = FileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
 
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
 
-        bufferedWriter.write("1.0 1.0 2.0 2.0 3.0 3.0 4.0 4.0\n" +
-                "2.0 2.0 3v.0 3.0 4.0 4.0 5z.0 5.0\n" +
-                "5 5 8\n" +
-                "8 84 4 7 9 3 6 5 4 7 8 5 2 2");
+        bufferedWriter.write(properties.getProperty("file.data"));
         bufferedWriter.close();
 
         lines = new ArrayList<>();

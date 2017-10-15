@@ -36,10 +36,10 @@ public class FileHelper {
     }
 
     public String acquireFilePath() throws CacheTetragonException {
-            if (properties == null) {
-                loadProperties();
-            }
-            return properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
+        if (properties == null) {
+            loadProperties();
+        }
+        return properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
     }
 
     public void loadProperties(Properties properties) throws CacheTetragonException {

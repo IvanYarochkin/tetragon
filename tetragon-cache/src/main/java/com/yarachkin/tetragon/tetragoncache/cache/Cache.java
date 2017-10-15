@@ -92,6 +92,6 @@ public class Cache {
     }
 
     public void flush() throws CacheTetragonException {
-        Writer.getInstance().write();
+        Writer.getInstance().write(getCache());
     }
 }
