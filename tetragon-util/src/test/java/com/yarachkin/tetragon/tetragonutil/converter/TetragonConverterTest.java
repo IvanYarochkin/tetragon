@@ -6,6 +6,7 @@ import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -40,6 +41,11 @@ public class TetragonConverterTest {
         Point resultFourthPoint = new Point(1, 4.0, 2.0);
 
         resultTetragon = new Tetragon(1, resultFirstPoint, resultSecondPoint, resultThirdPoint, resultFourthPoint);
+    }
+
+    @AfterMethod
+    public void tearDown() throws Exception {
+        IdGenerator.setIsTest(false);
     }
 
     @Test

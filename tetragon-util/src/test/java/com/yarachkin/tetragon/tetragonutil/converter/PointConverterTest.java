@@ -4,6 +4,7 @@ import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,11 @@ public class PointConverterTest {
         IdGenerator.setIsTest(true);
         pointDto = new PointDto("1.2", "2.3");
         point = new Point(1, 1.2, 2.3);
+    }
+
+    @AfterMethod
+    public void tearDown() throws Exception {
+        IdGenerator.setIsTest(false);
     }
 
     @Test

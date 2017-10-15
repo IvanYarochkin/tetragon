@@ -20,7 +20,8 @@ public class Cache {
     private List<Tetragon> cache;
 
     private Cache() throws CacheTetragonException {
-        cache = LineParser.parse(Reader.getInstance().readFromFile(Reader.getInstance().acquireFilePath()), "\\s");
+        Reader reader = Reader.getInstance();
+        cache = LineParser.parse(reader.readFromFile(reader.acquireFilePath()), "\\s");
     }
 
     private static class SingletonHolder {

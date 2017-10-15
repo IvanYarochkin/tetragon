@@ -68,8 +68,16 @@ public class Tetragon extends AbstractEntity implements Cloneable {
 
         Tetragon tetragon = (Tetragon) object;
 
-        return (tetragon.getId() == this.getId()) && (tetragon.getFirst().equals(this.getFirst())) && (tetragon.getSecond().equals(this.getSecond())) &&
-                (tetragon.getThird().equals(this.getThird()) && (tetragon.getFourth().equals(this.getFourth())));
+        if (first != null ? !first.equals(tetragon.first) : tetragon.first != null) {
+            return false;
+        }
+        if (second != null ? !second.equals(tetragon.second) : tetragon.second != null) {
+            return false;
+        }
+        if (third != null ? !third.equals(tetragon.third) : tetragon.third != null) {
+            return false;
+        }
+        return fourth != null ? fourth.equals(tetragon.fourth) : tetragon.fourth == null;
     }
 
     @Override
@@ -78,10 +86,10 @@ public class Tetragon extends AbstractEntity implements Cloneable {
         int prime = 31;
 
         result = result * prime + (int) getId();
-        result = result * prime + first.hashCode();
-        result = result * prime + second.hashCode();
-        result = result * prime + third.hashCode();
-        result = result * prime + fourth.hashCode();
+        result = result * prime + (first != null ? first.hashCode() : 0);
+        result = result * prime + (second != null ? second.hashCode() : 0);
+        result = result * prime + (third != null ? third.hashCode() : 0);
+        result = result * prime + (fourth != null ? fourth.hashCode() : 0);
 
         return result;
     }

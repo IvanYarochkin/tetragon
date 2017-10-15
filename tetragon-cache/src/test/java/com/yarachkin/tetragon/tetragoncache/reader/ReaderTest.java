@@ -50,6 +50,12 @@ public class ReaderTest {
         lines.add("8 84 4 7 9 3 6 5 4 7 8 5 2 2");
     }
 
+    @AfterClass
+    public void tearDown() throws IOException {
+        Files.delete(Paths.get(filePath));
+        Files.delete(Paths.get("src/test/resources/test_created_file.txt"));
+    }
+
     @Test
     public void readFromFileTest() throws Exception {
         assertEquals(Reader.getInstance().readFromFile(filePath), lines);
@@ -60,11 +66,4 @@ public class ReaderTest {
         Reader.getInstance().createFileIfNotExists("src/test/resources/test_created_file.txt");
         assertFalse(Files.notExists(Paths.get("src/test/resources/test_created_file.txt")));
     }
-
-    @AfterClass
-    public void tearDown() throws IOException {
-        Files.delete(Paths.get(filePath));
-        Files.delete(Paths.get("src/test/resources/test_created_file.txt"));
-    }
-
 }
