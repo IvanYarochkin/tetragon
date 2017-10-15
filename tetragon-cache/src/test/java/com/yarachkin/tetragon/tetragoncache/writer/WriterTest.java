@@ -3,7 +3,6 @@ package com.yarachkin.tetragon.tetragoncache.writer;
 import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
 import com.yarachkin.tetragon.tetragoncache.reader.Reader;
-import com.yarachkin.tetragon.tetragoncache.reader.ReaderTest;
 import com.yarachkin.tetragon.tetragonmodel.entity.Point;
 import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 import org.testng.annotations.AfterMethod;
@@ -27,7 +26,7 @@ public class WriterTest {
     @BeforeMethod
     public void setUp() throws CacheTetragonException, IOException {
         Properties properties = new Properties();
-        properties.load(ReaderTest.class.getResourceAsStream("/file_writer_test.properties"));
+        properties.load(WriterTest.class.getResourceAsStream("/file_writer_test.properties"));
         FileHelper.getInstance().loadProperties(properties);
         filePath = FileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
