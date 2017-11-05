@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.yarachkin.tetragon</groupId>
-            <artifactId>tetragon-model</artifactId>
+            <artifactId>tetragon-common</artifactId>
         </dependency>
 
         <dependency>

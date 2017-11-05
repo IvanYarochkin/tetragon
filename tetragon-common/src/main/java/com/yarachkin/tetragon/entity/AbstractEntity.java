@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonmodel.entity;
+package com.yarachkin.tetragon.entity;
 
 public abstract class AbstractEntity {
     private long id;

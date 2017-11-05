@@ -1,8 +1,7 @@
 package com.yarachkin.tetragon.tetragonaction.action;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
+import com.yarachkin.tetragon.entity.Point;
 
-import static com.yarachkin.tetragon.tetragonaction.action.CalculatingTetragonAction.calculateDistanceBetweenPoints;
 import static java.lang.Math.sqrt;
 
 public final class CalculatingTriangleAction {

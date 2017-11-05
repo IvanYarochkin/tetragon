@@ -1,7 +1,7 @@
 package com.yarachkin.tetragon.tetragonaction.action;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.entity.Point;
+import com.yarachkin.tetragon.entity.Tetragon;
 
 import static java.lang.Math.hypot;
 import static java.lang.Math.pow;

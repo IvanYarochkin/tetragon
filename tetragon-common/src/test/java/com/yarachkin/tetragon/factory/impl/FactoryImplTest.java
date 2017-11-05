@@ -1,15 +1,14 @@
-package com.yarachkin.tetragon.tetragonmodel.factory.impl;
+package com.yarachkin.tetragon.factory.impl;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
-import com.yarachkin.tetragon.tetragonmodel.exception.ModelTetragonException;
+import com.yarachkin.tetragon.entity.Point;
+import com.yarachkin.tetragon.entity.Tetragon;
+import com.yarachkin.tetragon.exception.ModelTetragonException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class FactoryImplTest {
-
     private Point point;
     private Tetragon tetragon;
 
@@ -36,5 +35,4 @@ public class FactoryImplTest {
         FactoryImpl factory = new FactoryImpl();
         factory.factoryMethod("test");
     }
-
 }

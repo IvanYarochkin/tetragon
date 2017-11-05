@@ -17,8 +17,9 @@
     <dependencies>
         <dependency>
             <groupId>com.yarachkin.tetragon</groupId>
-            <artifactId>tetragon-model</artifactId>
+            <artifactId>tetragon-common</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

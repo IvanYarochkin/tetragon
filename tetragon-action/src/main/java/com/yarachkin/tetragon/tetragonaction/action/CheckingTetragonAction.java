@@ -1,6 +1,6 @@
 package com.yarachkin.tetragon.tetragonaction.action;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.entity.Tetragon;
 
 import static com.yarachkin.tetragon.tetragonaction.action.CalculatingTetragonAction.calculateArea;
 import static com.yarachkin.tetragon.tetragonaction.action.CalculatingTetragonAction.calculateDistanceBetweenPoints;

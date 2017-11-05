@@ -1,8 +1,8 @@
-package com.yarachkin.tetragon.tetragonmodel.factory;
+package com.yarachkin.tetragon.factory;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.AbstractEntity;
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.entity.AbstractEntity;
+import com.yarachkin.tetragon.entity.Point;
+import com.yarachkin.tetragon.entity.Tetragon;
 
 public enum FactoryEntityType {
     TETRAGON {

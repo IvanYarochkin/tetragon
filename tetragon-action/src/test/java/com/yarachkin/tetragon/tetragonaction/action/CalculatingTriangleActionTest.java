@@ -1,6 +1,6 @@
 package com.yarachkin.tetragon.tetragonaction.action;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
+import com.yarachkin.tetragon.entity.Point;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

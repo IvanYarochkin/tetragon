@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonmodel.entity;
+package com.yarachkin.tetragon.entity;
 
 public class Point extends AbstractEntity implements Cloneable {
     private double x;

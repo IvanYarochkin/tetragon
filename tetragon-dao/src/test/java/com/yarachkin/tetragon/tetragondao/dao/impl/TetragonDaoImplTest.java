@@ -1,11 +1,11 @@
 package com.yarachkin.tetragon.tetragondao.dao.impl;
 
+import com.yarachkin.tetragon.entity.Point;
+import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.tetragoncache.cache.Cache;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
 import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
 import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

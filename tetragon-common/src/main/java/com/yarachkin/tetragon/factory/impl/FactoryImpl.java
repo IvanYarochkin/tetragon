@@ -1,9 +1,9 @@
-package com.yarachkin.tetragon.tetragonmodel.factory.impl;
+package com.yarachkin.tetragon.factory.impl;
 
-import com.yarachkin.tetragon.tetragonmodel.entity.AbstractEntity;
-import com.yarachkin.tetragon.tetragonmodel.exception.ModelTetragonException;
-import com.yarachkin.tetragon.tetragonmodel.factory.Factory;
-import com.yarachkin.tetragon.tetragonmodel.factory.FactoryEntityType;
+import com.yarachkin.tetragon.entity.AbstractEntity;
+import com.yarachkin.tetragon.exception.ModelTetragonException;
+import com.yarachkin.tetragon.factory.Factory;
+import com.yarachkin.tetragon.factory.FactoryEntityType;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

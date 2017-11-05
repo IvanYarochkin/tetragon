@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonmodel.dto;
+package com.yarachkin.tetragon.dto;
 
 public class TetragonDto {
     private PointDto first;

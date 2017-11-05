@@ -1,7 +1,7 @@
 package com.yarachkin.tetragon.tetragondao.dao;
 
+import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
 
 import java.util.List;
 import java.util.Optional;

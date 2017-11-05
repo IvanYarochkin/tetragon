@@ -1,8 +1,8 @@
 package com.yarachkin.tetragon.tetragonutil.validator;
 
-import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
-import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
+import com.yarachkin.tetragon.dto.PointDto;
+import com.yarachkin.tetragon.dto.TetragonDto;
+import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.tetragonutil.converter.PointConverter;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 

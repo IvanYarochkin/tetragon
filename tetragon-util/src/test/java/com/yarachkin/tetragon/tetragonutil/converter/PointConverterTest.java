@@ -1,7 +1,7 @@
 package com.yarachkin.tetragon.tetragonutil.converter;
 
-import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
-import com.yarachkin.tetragon.tetragonmodel.entity.Point;
+import com.yarachkin.tetragon.dto.PointDto;
+import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import org.testng.annotations.AfterMethod;

@@ -1,7 +1,7 @@
 package com.yarachkin.tetragon.tetragonservice.service;
 
-import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
-import com.yarachkin.tetragon.tetragonmodel.entity.Tetragon;
+import com.yarachkin.tetragon.dto.TetragonDto;
+import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.tetragonservice.exception.ServiceTetragonException;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 

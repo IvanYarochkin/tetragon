@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonmodel.exception;
+package com.yarachkin.tetragon.exception;
 
 public class ModelTetragonException extends Exception {
     public ModelTetragonException() {

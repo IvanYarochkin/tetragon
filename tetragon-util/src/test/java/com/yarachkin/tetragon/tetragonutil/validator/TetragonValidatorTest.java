@@ -1,7 +1,7 @@
 package com.yarachkin.tetragon.tetragonutil.validator;
 
-import com.yarachkin.tetragon.tetragonmodel.dto.PointDto;
-import com.yarachkin.tetragon.tetragonmodel.dto.TetragonDto;
+import com.yarachkin.tetragon.dto.PointDto;
+import com.yarachkin.tetragon.dto.TetragonDto;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
