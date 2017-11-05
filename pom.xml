@@ -17,6 +17,7 @@
         <module>tetragon-dao</module>
         <module>tetragon-service</module>
         <module>tetragon-action</module>
+        <module>tetragon-common</module>
     </modules>
 
     <properties>
