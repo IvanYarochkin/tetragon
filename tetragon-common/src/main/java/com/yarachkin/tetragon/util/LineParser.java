@@ -1,11 +1,11 @@
-package com.yarachkin.tetragon.tetragonutil.parser;
+package com.yarachkin.tetragon.util;
 
 import com.yarachkin.tetragon.dto.PointDto;
 import com.yarachkin.tetragon.dto.TetragonDto;
 import com.yarachkin.tetragon.entity.Tetragon;
-import com.yarachkin.tetragon.tetragonutil.converter.TetragonConverter;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
-import com.yarachkin.tetragon.tetragonutil.validator.TetragonValidator;
+import com.yarachkin.tetragon.util.converter.TetragonConverter;
+import com.yarachkin.tetragon.util.exception.UtilTetragonException;
+import com.yarachkin.tetragon.util.validator.TetragonValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

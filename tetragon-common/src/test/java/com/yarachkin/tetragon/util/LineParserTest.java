@@ -1,9 +1,8 @@
-package com.yarachkin.tetragon.tetragonutil.parser;
+package com.yarachkin.tetragon.util;
 
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.entity.Tetragon;
-import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
+import com.yarachkin.tetragon.util.exception.UtilTetragonException;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

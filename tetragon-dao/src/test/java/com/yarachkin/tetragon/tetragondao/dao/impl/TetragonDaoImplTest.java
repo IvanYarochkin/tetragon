@@ -6,7 +6,7 @@ import com.yarachkin.tetragon.tetragoncache.cache.Cache;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
 import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
 import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
-import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
+import com.yarachkin.tetragon.util.IdGenerator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

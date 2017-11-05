@@ -7,9 +7,9 @@ import com.yarachkin.tetragon.tetragondao.dao.impl.TetragonDaoImpl;
 import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
 import com.yarachkin.tetragon.tetragonservice.exception.ServiceTetragonException;
 import com.yarachkin.tetragon.tetragonservice.service.TetragonService;
-import com.yarachkin.tetragon.tetragonutil.converter.TetragonConverter;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
-import com.yarachkin.tetragon.tetragonutil.validator.TetragonValidator;
+import com.yarachkin.tetragon.util.converter.TetragonConverter;
+import com.yarachkin.tetragon.util.exception.UtilTetragonException;
+import com.yarachkin.tetragon.util.validator.TetragonValidator;
 
 import java.util.List;
 import java.util.Optional;

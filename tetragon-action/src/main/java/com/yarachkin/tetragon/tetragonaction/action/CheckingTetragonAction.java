@@ -33,7 +33,6 @@ public final class CheckingTetragonAction {
         double firstDiagonal = calculateDistanceBetweenPoints(tetragon.getFirst(), tetragon.getThird());
         double secondDiagonal = calculateDistanceBetweenPoints(tetragon.getSecond(), tetragon.getFourth());
 
-
         if ( firstDiagonal != secondDiagonal ) {
             return false;
         }

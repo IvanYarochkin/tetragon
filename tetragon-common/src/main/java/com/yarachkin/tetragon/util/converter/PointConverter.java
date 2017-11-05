@@ -1,13 +1,13 @@
-package com.yarachkin.tetragon.tetragonutil.converter;
+package com.yarachkin.tetragon.util.converter;
 
 import com.yarachkin.tetragon.dto.PointDto;
 import com.yarachkin.tetragon.entity.AbstractEntity;
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.exception.ModelTetragonException;
 import com.yarachkin.tetragon.factory.impl.FactoryImpl;
-import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
-import com.yarachkin.tetragon.tetragonutil.validator.PointValidator;
+import com.yarachkin.tetragon.util.IdGenerator;
+import com.yarachkin.tetragon.util.exception.UtilTetragonException;
+import com.yarachkin.tetragon.util.validator.PointValidator;
 
 public final class PointConverter {
 

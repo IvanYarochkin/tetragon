@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonutil.common;
+package com.yarachkin.tetragon.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

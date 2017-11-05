@@ -5,7 +5,7 @@ import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import com.yarachkin.tetragon.tetragoncache.filehelper.FileHelper;
 import com.yarachkin.tetragon.tetragoncache.reader.Reader;
 import com.yarachkin.tetragon.tetragoncache.writer.Writer;
-import com.yarachkin.tetragon.tetragonutil.parser.LineParser;
+import com.yarachkin.tetragon.util.LineParser;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

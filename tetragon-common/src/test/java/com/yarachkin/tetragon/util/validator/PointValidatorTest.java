@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonutil.validator;
+package com.yarachkin.tetragon.util.validator;
 
 import com.yarachkin.tetragon.dto.PointDto;
 import org.testng.annotations.BeforeMethod;

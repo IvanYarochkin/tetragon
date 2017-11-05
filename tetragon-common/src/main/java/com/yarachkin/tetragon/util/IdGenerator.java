@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonutil.common;
+package com.yarachkin.tetragon.util;
 
 public final class IdGenerator {
     private static long tetragonId = 0;

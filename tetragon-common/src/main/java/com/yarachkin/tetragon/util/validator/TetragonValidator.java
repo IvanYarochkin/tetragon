@@ -1,10 +1,10 @@
-package com.yarachkin.tetragon.tetragonutil.validator;
+package com.yarachkin.tetragon.util.validator;
 
 import com.yarachkin.tetragon.dto.PointDto;
 import com.yarachkin.tetragon.dto.TetragonDto;
 import com.yarachkin.tetragon.entity.Point;
-import com.yarachkin.tetragon.tetragonutil.converter.PointConverter;
-import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
+import com.yarachkin.tetragon.util.converter.PointConverter;
+import com.yarachkin.tetragon.util.exception.UtilTetragonException;
 
 public final class TetragonValidator {
 

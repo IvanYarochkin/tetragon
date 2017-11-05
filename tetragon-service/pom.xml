@@ -21,11 +21,6 @@
 
         <dependency>
             <groupId>com.yarachkin.tetragon</groupId>
-            <artifactId>tetragon-util</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.yarachkin.tetragon</groupId>
             <artifactId>tetragon-dao</artifactId>
         </dependency>
         <dependency>
