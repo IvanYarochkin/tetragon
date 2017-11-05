@@ -34,7 +34,7 @@ public class TetragonDaoImpl implements TetragonDao {
 
     public boolean update(long id, Tetragon tetragon) throws DaoTetragonException {
         try {
-            if (Cache.getInstance().update(id, tetragon)) {
+            if ( Cache.getInstance().update(id, tetragon) ) {
                 Cache.getInstance().flush();
                 return true;
             }
@@ -47,7 +47,7 @@ public class TetragonDaoImpl implements TetragonDao {
 
     public boolean delete(long id) throws DaoTetragonException {
         try {
-            if (Cache.getInstance().remove(id)) {
+            if ( Cache.getInstance().remove(id) ) {
                 Cache.getInstance().flush();
                 return true;
             }

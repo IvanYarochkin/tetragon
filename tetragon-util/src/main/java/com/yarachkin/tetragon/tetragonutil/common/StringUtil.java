@@ -13,7 +13,7 @@ public final class StringUtil {
 
     public static boolean isDoubleValue(String value) {
         Matcher matcher = DOUBLE_PATTERN.matcher(value);
-        if (!matcher.matches()) {
+        if ( !matcher.matches() ) {
             return false;
         }
 

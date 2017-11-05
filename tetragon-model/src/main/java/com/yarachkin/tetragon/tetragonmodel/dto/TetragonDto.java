@@ -47,22 +47,22 @@ public class TetragonDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
+        if ( this == o ) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if ( o == null || getClass() != o.getClass() ) {
             return false;
         }
 
         TetragonDto that = (TetragonDto) o;
 
-        if (first != null ? !first.equals(that.first) : that.first != null) {
+        if ( first != null ? !first.equals(that.first) : that.first != null ) {
             return false;
         }
-        if (second != null ? !second.equals(that.second) : that.second != null) {
+        if ( second != null ? !second.equals(that.second) : that.second != null ) {
             return false;
         }
-        if (third != null ? !third.equals(that.third) : that.third != null) {
+        if ( third != null ? !third.equals(that.third) : that.third != null ) {
             return false;
         }
         return fourth != null ? fourth.equals(that.fourth) : that.fourth == null;

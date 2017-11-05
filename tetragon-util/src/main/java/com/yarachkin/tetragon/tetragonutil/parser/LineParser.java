@@ -26,7 +26,7 @@ public final class LineParser {
         for (String line : lines) {
             try {
                 TetragonDto tetragonDto = parseLine(line, pattern);
-                if (TetragonValidator.validate(tetragonDto)) {
+                if ( TetragonValidator.validate(tetragonDto) ) {
                     tetragons.add(TetragonConverter.convert(tetragonDto));
                 }
             } catch (UtilTetragonException e) {
@@ -39,7 +39,7 @@ public final class LineParser {
     public static TetragonDto parseLine(String line, String pattern) throws UtilTetragonException {
         String[] splittedLine = line.split(pattern);
 
-        if (splittedLine.length != 8) {
+        if ( splittedLine.length != 8 ) {
             throw new UtilTetragonException("Line hasn't 8 parameters, parameters = " + splittedLine.length);
         }
 

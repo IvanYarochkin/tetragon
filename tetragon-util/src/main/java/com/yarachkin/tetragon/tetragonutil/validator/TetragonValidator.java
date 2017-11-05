@@ -13,14 +13,14 @@ public final class TetragonValidator {
     }
 
     public static boolean validate(TetragonDto tetragonDto) {
-        if ((tetragonDto == null)) {
+        if ( (tetragonDto == null) ) {
             return false;
         }
 
-        if (!(PointValidator.validate(tetragonDto.getFirst())
+        if ( !(PointValidator.validate(tetragonDto.getFirst())
                 && PointValidator.validate(tetragonDto.getSecond())
                 && PointValidator.validate(tetragonDto.getThird())
-                && PointValidator.validate(tetragonDto.getFourth()))) {
+                && PointValidator.validate(tetragonDto.getFourth())) ) {
             return false;
         }
 
@@ -29,17 +29,17 @@ public final class TetragonValidator {
 
     public static boolean validateByMoreThenTwoPointsOnLine(TetragonDto tetragonDto) {
         boolean isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirst(), tetragonDto.getSecond(), tetragonDto.getThird());
-        if (!isMoreThenTwoPointsOnLine) {
+        if ( !isMoreThenTwoPointsOnLine ) {
             return false;
         }
 
         isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirst(), tetragonDto.getSecond(), tetragonDto.getFourth());
-        if (!isMoreThenTwoPointsOnLine) {
+        if ( !isMoreThenTwoPointsOnLine ) {
             return false;
         }
 
         isMoreThenTwoPointsOnLine = checkThreePoints(tetragonDto.getFirst(), tetragonDto.getThird(), tetragonDto.getFourth());
-        if (!isMoreThenTwoPointsOnLine) {
+        if ( !isMoreThenTwoPointsOnLine ) {
             return false;
         }
 
@@ -60,11 +60,11 @@ public final class TetragonValidator {
             double secondY = secondPoint.getY();
             double thirdY = thirdPoint.getY();
 
-            if ((firstX - secondX) * (thirdY - secondY) == (firstY - secondY) * (thirdX - secondX)) {
+            if ( (firstX - secondX) * (thirdY - secondY) == (firstY - secondY) * (thirdX - secondX) ) {
                 return false;
             }
 
-            if ((secondX - firstX) * (thirdY - firstY) == (secondY - firstY) * (thirdX - firstX)) {
+            if ( (secondX - firstX) * (thirdY - firstY) == (secondY - firstY) * (thirdX - firstX) ) {
                 return false;
             }
 

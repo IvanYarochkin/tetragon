@@ -10,16 +10,14 @@ public final class PointValidator {
     }
 
     public static boolean validate(PointDto pointDto) {
-        if (pointDto == null) {
+        if ( pointDto == null ) {
             return false;
         }
 
-        if (!StringUtil.isDoubleValue(pointDto.getX())) {
+        if ( !StringUtil.isDoubleValue(pointDto.getX()) ) {
             return false;
         }
 
         return StringUtil.isDoubleValue(pointDto.getY());
     }
-
-
 }

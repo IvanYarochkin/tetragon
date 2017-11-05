@@ -15,5 +15,4 @@ public class CacheTetragonException extends Exception {
     public CacheTetragonException(Throwable cause) {
         super(cause);
     }
-
 }

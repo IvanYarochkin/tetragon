@@ -26,7 +26,7 @@ public class TetragonServiceImpl implements TetragonService {
     @Override
     public void create(TetragonDto tetragonDto) throws ServiceTetragonException {
         try {
-            if (TetragonValidator.validate(tetragonDto)) {
+            if ( TetragonValidator.validate(tetragonDto) ) {
                 TetragonDao tetragonDao = new TetragonDaoImpl();
                 tetragonDao.create(TetragonConverter.convert(tetragonDto));
             }
@@ -48,7 +48,7 @@ public class TetragonServiceImpl implements TetragonService {
             TetragonDao tetragonDao = new TetragonDaoImpl();
             Optional<Tetragon> tetragon = tetragonDao.findById(id);
 
-            if (!tetragon.isPresent()) {
+            if ( !tetragon.isPresent() ) {
                 return false;
             }
 

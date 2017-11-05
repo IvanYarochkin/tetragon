@@ -8,12 +8,8 @@ import com.yarachkin.tetragon.tetragonmodel.factory.impl.FactoryImpl;
 import com.yarachkin.tetragon.tetragonutil.common.IdGenerator;
 import com.yarachkin.tetragon.tetragonutil.exception.UtilTetragonException;
 import com.yarachkin.tetragon.tetragonutil.validator.PointValidator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public final class PointConverter {
-
-    private static Logger LOGGER = LogManager.getRootLogger();
 
     private PointConverter() {
 
@@ -21,10 +17,10 @@ public final class PointConverter {
 
     public static Point convert(PointDto pointDto) throws UtilTetragonException {
         try {
-            if (pointDto == null) {
+            if ( pointDto == null ) {
                 return null;
             }
-            if (!PointValidator.validate(pointDto)) {
+            if ( !PointValidator.validate(pointDto) ) {
                 throw new UtilTetragonException("Incorrect values x = " + pointDto.getX() + " or y = " + pointDto.getY());
             }
             double x = Double.parseDouble(pointDto.getX());

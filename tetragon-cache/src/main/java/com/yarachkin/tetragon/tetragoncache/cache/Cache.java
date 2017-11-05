@@ -50,7 +50,7 @@ public class Cache {
             try {
                 cloneCache.add(tetragon.clone());
             } catch (CloneNotSupportedException e) {
-                LOGGER.log(Level.ERROR, "Can't create clone object.");
+                LOGGER.log(Level.ERROR, "Can't create clone object.", e);
             }
         });
 
@@ -67,7 +67,7 @@ public class Cache {
         Optional<Tetragon> tetragonOption = cache.stream()
                 .filter(element -> element.getId() == id)
                 .findFirst();
-        if (!tetragonOption.isPresent()) {
+        if ( !tetragonOption.isPresent() ) {
             return false;
         }
         Tetragon foundTetragon = tetragonOption.get();
@@ -84,7 +84,7 @@ public class Cache {
         Optional<Tetragon> tetragonOptional = cache.stream()
                 .filter(element -> element.getId() == id)
                 .findFirst();
-        if (!tetragonOptional.isPresent()) {
+        if ( !tetragonOptional.isPresent() ) {
             return false;
         }
         cache.remove(tetragonOptional.get());

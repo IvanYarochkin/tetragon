@@ -7,7 +7,10 @@ public class Tetragon extends AbstractEntity implements Cloneable {
     private Point fourth;
 
     public Tetragon() {
-
+        first = new Point();
+        second = new Point();
+        third = new Point();
+        fourth = new Point();
     }
 
     public Tetragon(Point first, Point second, Point third, Point fourth) {
@@ -59,22 +62,22 @@ public class Tetragon extends AbstractEntity implements Cloneable {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) {
+        if ( this == object ) {
             return true;
         }
-        if ((object == null) || (getClass() != object.getClass())) {
+        if ( (object == null) || (getClass() != object.getClass()) ) {
             return false;
         }
 
         Tetragon tetragon = (Tetragon) object;
 
-        if (first != null ? !first.equals(tetragon.first) : tetragon.first != null) {
+        if ( first != null ? !first.equals(tetragon.first) : tetragon.first != null ) {
             return false;
         }
-        if (second != null ? !second.equals(tetragon.second) : tetragon.second != null) {
+        if ( second != null ? !second.equals(tetragon.second) : tetragon.second != null ) {
             return false;
         }
-        if (third != null ? !third.equals(tetragon.third) : tetragon.third != null) {
+        if ( third != null ? !third.equals(tetragon.third) : tetragon.third != null ) {
             return false;
         }
         return fourth != null ? fourth.equals(tetragon.fourth) : tetragon.fourth == null;

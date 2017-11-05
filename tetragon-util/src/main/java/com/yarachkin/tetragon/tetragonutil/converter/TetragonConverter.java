@@ -19,7 +19,7 @@ public final class TetragonConverter {
 
     public static Tetragon convert(TetragonDto tetragonDto) throws UtilTetragonException {
         try {
-            if (tetragonDto == null) {
+            if ( tetragonDto == null ) {
                 return null;
             }
             FactoryImpl factory = new FactoryImpl();
@@ -45,20 +45,20 @@ public final class TetragonConverter {
     }
 
     public static Tetragon convert(Tetragon tetragon, TetragonDto tetragonDto) {
-        if (tetragonDto == null) {
+        if ( tetragonDto == null ) {
             return null;
         }
 
-        if (tetragonDto.getFirst() != null) {
+        if ( tetragonDto.getFirst() != null ) {
             tetragon.setFirst(mergePointWithPointDto(tetragon.getFirst(), tetragonDto.getFirst()));
         }
-        if (tetragonDto.getSecond() != null) {
+        if ( tetragonDto.getSecond() != null ) {
             tetragon.setSecond(mergePointWithPointDto(tetragon.getSecond(), tetragonDto.getSecond()));
         }
-        if (tetragonDto.getThird() != null) {
+        if ( tetragonDto.getThird() != null ) {
             tetragon.setThird(mergePointWithPointDto(tetragon.getThird(), tetragonDto.getThird()));
         }
-        if (tetragonDto.getFourth() != null) {
+        if ( tetragonDto.getFourth() != null ) {
             tetragon.setFourth(mergePointWithPointDto(tetragon.getFourth(), tetragonDto.getFourth()));
         }
         return tetragon;
@@ -66,11 +66,11 @@ public final class TetragonConverter {
 
     private static Point mergePointWithPointDto(Point point, PointDto pointDto) {
 
-        if (pointDto.getX() != null && StringUtil.isDoubleValue(pointDto.getX())) {
+        if ( pointDto.getX() != null && StringUtil.isDoubleValue(pointDto.getX()) ) {
             point.setX(Double.parseDouble(pointDto.getX()));
         }
 
-        if (pointDto.getY() != null && StringUtil.isDoubleValue(pointDto.getY())) {
+        if ( pointDto.getY() != null && StringUtil.isDoubleValue(pointDto.getY()) ) {
             point.setY(Double.parseDouble(pointDto.getY()));
         }
 

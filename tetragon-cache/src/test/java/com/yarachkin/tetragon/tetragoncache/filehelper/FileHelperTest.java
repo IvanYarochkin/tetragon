@@ -53,4 +53,11 @@ public class FileHelperTest {
         String defaultPath = defaultProperties.getProperty("file.path") + defaultProperties.getProperty("file.name");
         assertEquals(FileHelper.getInstance().acquireFilePath(), defaultPath);
     }
+
+    @Test
+    public void setPropertyPathTest() throws CacheTetragonException, IOException {
+        FileHelper.getInstance().setPropertyPath("/file_helper_test.properties");
+
+        assertEquals(FileHelper.getInstance().acquireFilePath(), filePath);
+    }
 }

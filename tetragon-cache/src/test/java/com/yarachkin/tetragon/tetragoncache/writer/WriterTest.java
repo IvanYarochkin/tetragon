@@ -49,5 +49,4 @@ public class WriterTest {
         Writer.getInstance().write(tetragons);
         assertEquals(Reader.getInstance().readFromFile(), expectedLines);
     }
-
 }

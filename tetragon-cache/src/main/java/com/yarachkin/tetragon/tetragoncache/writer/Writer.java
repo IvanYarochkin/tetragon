@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class Writer {
+public final class Writer {
 
     private Writer() {
     }

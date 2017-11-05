@@ -5,7 +5,7 @@ import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class FileHelper {
+public final class FileHelper {
     private static final String FILE_PROPERTIES = "/file.properties";
     private static final String FILE_DIRECTORY = "file.path";
     private static final String FILE_NAME = "file.name";
@@ -36,13 +36,13 @@ public class FileHelper {
     }
 
     public String acquireFilePath() throws CacheTetragonException {
-        if (properties == null) {
+        if ( properties == null ) {
             loadProperties();
         }
         return properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
     }
 
-    public void loadProperties(Properties properties) throws CacheTetragonException {
+    public void loadProperties(Properties properties) {
         this.properties = properties;
     }
 

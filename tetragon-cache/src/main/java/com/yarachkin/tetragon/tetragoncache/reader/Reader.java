@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Reader {
+public final class Reader {
     private static final Logger LOGGER = LogManager.getRootLogger();
     private static final String FILE_MESSAGE = "File ";
 
@@ -33,11 +33,10 @@ public class Reader {
     public List<String> readFromFile() throws CacheTetragonException {
         createFileIfNotExists();
         try {
-            List<String> lines = new ArrayList<>();
-
-            Files.lines(Paths.get(FileHelper.getInstance().acquireFilePath()))
+            List<String> lines = Files.lines(Paths.get(FileHelper.getInstance().acquireFilePath()))
                     .filter(Strings::isNotEmpty)
-                    .forEach(lines::add);
+                    .collect(Collectors.toList());
+
             return lines;
         } catch (IOException e) {
             throw new CacheTetragonException("Read error", e);
@@ -49,7 +48,7 @@ public class Reader {
         try {
             Path cachePath = Paths.get(filePath);
 
-            if (Files.notExists(cachePath)) {
+            if ( Files.notExists(cachePath) ) {
                 LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " does not exist.");
                 Files.createFile(cachePath);
                 LOGGER.log(Level.INFO, FILE_MESSAGE + filePath + " created.");
