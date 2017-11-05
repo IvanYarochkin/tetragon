@@ -11,11 +11,11 @@
 
     <modules>
         <module>tetragon-resource</module>
-        <module>tetragon-cache</module>
         <module>tetragon-dao</module>
         <module>tetragon-service</module>
         <module>tetragon-action</module>
         <module>tetragon-common</module>
+        <module>tetragon-io</module>
     </modules>
 
     <properties>
@@ -54,7 +54,7 @@
 
             <dependency>
                 <groupId>com.yarachkin.tetragon</groupId>
-                <artifactId>tetragon-cache</artifactId>
+                <artifactId>tetragon-io</artifactId>
                 <version>${tetragon.module.version}</version>
             </dependency>
 

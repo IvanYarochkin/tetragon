@@ -1,8 +1,8 @@
 package com.yarachkin.tetragon.tetragondao.dao.impl;
 
+import com.yarachkin.tetragon.cache.TetragonCache;
 import com.yarachkin.tetragon.entity.Tetragon;
-import com.yarachkin.tetragon.tetragoncache.cache.Cache;
-import com.yarachkin.tetragon.tetragoncache.exception.CacheTetragonException;
+import com.yarachkin.tetragon.exception.IOTetragonException;
 import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
 import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
 
@@ -13,47 +13,47 @@ public class TetragonDaoImpl implements TetragonDao {
 
     @Override
     public List<Tetragon> findAll() {
-        return Cache.getInstance().getCache();
+        return TetragonCache.getInstance().getCache();
     }
 
     public void create(Tetragon tetragon) throws DaoTetragonException {
         try {
-            Cache.getInstance().add(tetragon);
-            Cache.getInstance().flush();
-        } catch (CacheTetragonException e) {
+            TetragonCache.getInstance().add(tetragon);
+            TetragonCache.getInstance().flush();
+        } catch (IOTetragonException e) {
             throw new DaoTetragonException(e);
         }
     }
 
     public Optional<Tetragon> findById(long id) {
 
-        return Cache.getInstance().getCache().stream()
+        return TetragonCache.getInstance().getCache().stream()
                 .filter(tetragon -> tetragon.getId() == id)
                 .findFirst();
     }
 
     public boolean update(long id, Tetragon tetragon) throws DaoTetragonException {
         try {
-            if ( Cache.getInstance().update(id, tetragon) ) {
-                Cache.getInstance().flush();
+            if ( TetragonCache.getInstance().update(id, tetragon) ) {
+                TetragonCache.getInstance().flush();
                 return true;
             }
 
             return false;
-        } catch (CacheTetragonException e) {
+        } catch (IOTetragonException e) {
             throw new DaoTetragonException(e);
         }
     }
 
     public boolean delete(long id) throws DaoTetragonException {
         try {
-            if ( Cache.getInstance().remove(id) ) {
-                Cache.getInstance().flush();
+            if ( TetragonCache.getInstance().remove(id) ) {
+                TetragonCache.getInstance().flush();
                 return true;
             }
 
             return false;
-        } catch (CacheTetragonException e) {
+        } catch (IOTetragonException e) {
             throw new DaoTetragonException(e.getMessage(), e);
         }
     }
