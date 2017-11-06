@@ -11,10 +11,10 @@
 
     <modules>
         <module>tetragon-resource</module>
-        <module>tetragon-service</module>
         <module>tetragon-action</module>
         <module>tetragon-common</module>
         <module>tetragon-io</module>
+        <module>tetragon-logic</module>
     </modules>
 
     <properties>
@@ -59,7 +59,7 @@
 
             <dependency>
                 <groupId>com.yarachkin.tetragon</groupId>
-                <artifactId>tetragon-service</artifactId>
+                <artifactId>tetragon-logic</artifactId>
                 <version>${tetragon.module.version}</version>
             </dependency>
 
@@ -135,5 +135,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonservice.service.impl;
+package com.yarachkin.tetragon.service.impl;
 
 import com.yarachkin.tetragon.cache.TetragonCache;
 import com.yarachkin.tetragon.dto.PointDto;
@@ -6,7 +6,7 @@ import com.yarachkin.tetragon.dto.TetragonDto;
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.filehelper.TetragonFileHelper;
-import com.yarachkin.tetragon.tetragonservice.service.TetragonService;
+import com.yarachkin.tetragon.service.TetragonService;
 import com.yarachkin.tetragon.util.IdGenerator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -27,7 +27,6 @@ public class TetragonServiceImplTest {
     private String filePath;
     private TetragonService tetragonService;
     private List<Tetragon> tetragons;
-    private TetragonDto tetragonDto;
 
     @BeforeClass
     public void setUp() throws Exception {
@@ -48,7 +47,6 @@ public class TetragonServiceImplTest {
 
         tetragons.add(new Tetragon(1, new Point(1, 1, 0), new Point(1, 2, 3), new Point(1, 4, 5), new Point(1, 6, 5)));
         tetragons.add(new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 9, 8), new Point(1, 0, 0)));
-
     }
 
     @AfterClass
@@ -79,7 +77,6 @@ public class TetragonServiceImplTest {
     @Test
     public void findByIdTest() throws Exception {
         assertEquals(tetragonService.findById(1), Optional.of(tetragons.get(0)));
-
     }
 
     @Test
@@ -95,5 +92,4 @@ public class TetragonServiceImplTest {
         tetragons.remove(0);
         assertEquals(TetragonCache.getInstance().getCache(), tetragons);
     }
-
 }

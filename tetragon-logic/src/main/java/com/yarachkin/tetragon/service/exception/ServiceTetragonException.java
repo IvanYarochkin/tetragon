@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonservice.exception;
+package com.yarachkin.tetragon.service.exception;
 
 public class ServiceTetragonException extends Exception {
     public ServiceTetragonException() {
