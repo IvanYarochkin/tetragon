@@ -11,7 +11,6 @@
 
     <modules>
         <module>tetragon-resource</module>
-        <module>tetragon-action</module>
         <module>tetragon-common</module>
         <module>tetragon-io</module>
         <module>tetragon-logic</module>
@@ -60,12 +59,6 @@
             <dependency>
                 <groupId>com.yarachkin.tetragon</groupId>
                 <artifactId>tetragon-logic</artifactId>
-                <version>${tetragon.module.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.yarachkin.tetragon</groupId>
-                <artifactId>tetragon-action</artifactId>
                 <version>${tetragon.module.version}</version>
             </dependency>
 

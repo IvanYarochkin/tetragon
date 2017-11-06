@@ -1,5 +1,4 @@
-package com.yarachkin.tetragon.tetragonaction.action;
-
+package com.yarachkin.tetragon.action;
 
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.entity.Tetragon;
@@ -86,6 +85,4 @@ public class CalculatingTetragonActionTest {
 
         assertEquals(CalculatingTetragonAction.calculateArea(tetragon), 9.0, 0.000000001);
     }
-
-
 }

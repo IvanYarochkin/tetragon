@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonaction.action;
+package com.yarachkin.tetragon.action;
 
 import com.yarachkin.tetragon.entity.Point;
 import org.testng.annotations.BeforeMethod;
@@ -33,5 +33,4 @@ public class CalculatingTriangleActionTest {
 
         assertEquals(CalculatingTriangleAction.calculateArea(first, second, third), 4, 0.000000001);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonaction.action;
+package com.yarachkin.tetragon.action;
 
 import com.yarachkin.tetragon.entity.Point;
 

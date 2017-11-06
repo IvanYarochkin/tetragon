@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragonaction.action;
+package com.yarachkin.tetragon.action;
 
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.entity.Tetragon;
@@ -79,5 +79,4 @@ public class CheckingTetragonActionTest {
 
         assertEquals(CheckingTetragonAction.isSquare(tetragon), false);
     }
-
 }
