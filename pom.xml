@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>tetragon-resource</module>
         <module>tetragon-common</module>
         <module>tetragon-io</module>
         <module>tetragon-logic</module>
@@ -36,12 +35,6 @@
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.yarachkin.tetragon</groupId>
-                <artifactId>tetragon-resource</artifactId>
-                <version>${tetragon.module.version}</version>
             </dependency>
 
             <dependency>
