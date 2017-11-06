@@ -31,8 +31,8 @@ public class TetragonCacheTest {
         Properties properties = new Properties();
         properties.load(TetragonCacheTest.class.getResourceAsStream("/file_cache_test.properties"));
         TetragonFileHelper.getInstance().loadProperties(properties);
-        filePath = TetragonFileHelper.getInstance().acquireFilePath();
 
+        filePath = TetragonFileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
 
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
@@ -40,6 +40,7 @@ public class TetragonCacheTest {
         bufferedWriter.write(properties.getProperty("file.data"));
         bufferedWriter.close();
 
+        TetragonCache.getInstance().refillCache();
         tetragons = new ArrayList<>();
         tetragons.add(new Tetragon(1, new Point(1, 1, 0), new Point(1, 2, 3), new Point(1, 4, 5), new Point(1, 6, 5)));
         tetragons.add(new Tetragon(1, new Point(1, 1, 1), new Point(1, 4, 3), new Point(1, 9, 8), new Point(1, 0, 0)));

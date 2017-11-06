@@ -42,7 +42,7 @@ public final class TetragonFileHelper {
         return properties.getProperty(FILE_DIRECTORY) + properties.getProperty(FILE_NAME);
     }
 
-    public void loadProperties(Properties properties) {
+    public void loadProperties(Properties properties) throws IOTetragonException {
         this.properties = properties;
     }
 

@@ -1,10 +1,10 @@
 package com.yarachkin.tetragon.tetragonservice.service.impl;
 
+import com.yarachkin.tetragon.dao.TetragonDao;
+import com.yarachkin.tetragon.dao.exception.DaoTetragonException;
+import com.yarachkin.tetragon.dao.impl.TetragonDaoImpl;
 import com.yarachkin.tetragon.dto.TetragonDto;
 import com.yarachkin.tetragon.entity.Tetragon;
-import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
-import com.yarachkin.tetragon.tetragondao.dao.impl.TetragonDaoImpl;
-import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
 import com.yarachkin.tetragon.tetragonservice.exception.ServiceTetragonException;
 import com.yarachkin.tetragon.tetragonservice.service.TetragonService;
 import com.yarachkin.tetragon.util.converter.TetragonConverter;

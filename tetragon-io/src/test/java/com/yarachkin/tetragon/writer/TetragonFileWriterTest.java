@@ -28,6 +28,7 @@ public class TetragonFileWriterTest {
         Properties properties = new Properties();
         properties.load(TetragonFileWriterTest.class.getResourceAsStream("/file_writer_test.properties"));
         TetragonFileHelper.getInstance().loadProperties(properties);
+
         filePath = TetragonFileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
 

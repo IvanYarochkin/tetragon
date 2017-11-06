@@ -1,11 +1,11 @@
-package com.yarachkin.tetragon.tetragondao.dao.impl;
+package com.yarachkin.tetragon.dao.impl;
 
 import com.yarachkin.tetragon.cache.TetragonCache;
+import com.yarachkin.tetragon.dao.TetragonDao;
+import com.yarachkin.tetragon.dao.exception.DaoTetragonException;
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.filehelper.TetragonFileHelper;
-import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
-import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
 import com.yarachkin.tetragon.util.IdGenerator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -31,9 +31,13 @@ public class TetragonDaoImplTest {
     @BeforeClass
     public void setUp() throws Exception {
         IdGenerator.setIsTest(true);
+
+        TetragonCache.getInstance().getCache().forEach(System.out::println);
+
         Properties properties = new Properties();
         properties.load(TetragonDaoImplTest.class.getResourceAsStream("/file_dao_test.properties"));
         TetragonFileHelper.getInstance().loadProperties(properties);
+
         filePath = TetragonFileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
 
@@ -42,6 +46,7 @@ public class TetragonDaoImplTest {
         bufferedWriter.write(properties.getProperty("file.data"));
         bufferedWriter.close();
 
+        TetragonCache.getInstance().refillCache();
         tetragonDao = new TetragonDaoImpl();
         tetragons = new ArrayList<>();
 
@@ -91,5 +96,4 @@ public class TetragonDaoImplTest {
         tetragons.remove(0);
         assertEquals(TetragonCache.getInstance().getCache(), tetragons);
     }
-
 }

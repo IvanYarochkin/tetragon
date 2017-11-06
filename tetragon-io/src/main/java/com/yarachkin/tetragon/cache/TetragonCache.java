@@ -2,7 +2,6 @@ package com.yarachkin.tetragon.cache;
 
 import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.exception.IOTetragonException;
-import com.yarachkin.tetragon.filehelper.TetragonFileHelper;
 import com.yarachkin.tetragon.reader.TetragonFileReader;
 import com.yarachkin.tetragon.util.LineParser;
 import com.yarachkin.tetragon.writer.TetragonFileWriter;
@@ -21,7 +20,6 @@ public class TetragonCache {
     private List<Tetragon> cache;
 
     private TetragonCache() throws IOTetragonException {
-        TetragonFileHelper.getInstance();
         TetragonFileReader reader = TetragonFileReader.getInstance();
         cache = LineParser.parse(reader.readFromFile(), "\\s");
     }
@@ -55,6 +53,11 @@ public class TetragonCache {
         });
 
         return cloneCache;
+    }
+
+    public void refillCache() throws IOTetragonException {
+        TetragonFileReader reader = TetragonFileReader.getInstance();
+        cache = LineParser.parse(reader.readFromFile(), "\\s");
     }
 
 

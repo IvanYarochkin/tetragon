@@ -1,4 +1,4 @@
-package com.yarachkin.tetragon.tetragondao.exception;
+package com.yarachkin.tetragon.dao.exception;
 
 public class DaoTetragonException extends Exception {
     public DaoTetragonException() {

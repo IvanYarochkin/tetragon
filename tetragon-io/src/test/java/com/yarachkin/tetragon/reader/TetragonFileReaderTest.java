@@ -28,6 +28,7 @@ public class TetragonFileReaderTest {
         Properties properties = new Properties();
         properties.load(TetragonFileReaderTest.class.getResourceAsStream("/file_reader_test.properties"));
         TetragonFileHelper.getInstance().loadProperties(properties);
+
         filePath = TetragonFileHelper.getInstance().acquireFilePath();
         Files.createFile(Paths.get(filePath));
 

@@ -1,10 +1,10 @@
-package com.yarachkin.tetragon.tetragondao.dao.impl;
+package com.yarachkin.tetragon.dao.impl;
 
 import com.yarachkin.tetragon.cache.TetragonCache;
+import com.yarachkin.tetragon.dao.TetragonDao;
+import com.yarachkin.tetragon.dao.exception.DaoTetragonException;
 import com.yarachkin.tetragon.entity.Tetragon;
 import com.yarachkin.tetragon.exception.IOTetragonException;
-import com.yarachkin.tetragon.tetragondao.dao.TetragonDao;
-import com.yarachkin.tetragon.tetragondao.exception.DaoTetragonException;
 
 import java.util.List;
 import java.util.Optional;
