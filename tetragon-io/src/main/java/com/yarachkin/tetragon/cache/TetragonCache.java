@@ -34,7 +34,6 @@ public class TetragonCache {
                 throw new ExceptionInInitializerError(e);
             }
         }
-
     }
 
     public static TetragonCache getInstance() {
@@ -91,6 +90,7 @@ public class TetragonCache {
             return false;
         }
         cache.remove(tetragonOptional.get());
+
         return true;
     }
 

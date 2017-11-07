@@ -32,8 +32,6 @@ public class TetragonDaoImplTest {
     public void setUp() throws Exception {
         IdGenerator.setIsTest(true);
 
-        TetragonCache.getInstance().getCache().forEach(System.out::println);
-
         Properties properties = new Properties();
         properties.load(TetragonDaoImplTest.class.getResourceAsStream("/file_dao_test.properties"));
         TetragonFileHelper.getInstance().loadProperties(properties);

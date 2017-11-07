@@ -1,10 +1,14 @@
 package com.yarachkin.tetragon.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tetragon extends AbstractEntity implements Cloneable {
     private Point first;
     private Point second;
     private Point third;
     private Point fourth;
+    private List<TetragonObserver> observers = new ArrayList<>();
 
     public Tetragon() {
         first = new Point();
@@ -28,12 +32,27 @@ public class Tetragon extends AbstractEntity implements Cloneable {
         this.fourth = fourth;
     }
 
+    public void registerTetragonObserver(TetragonObserver tetragonObserver) {
+        observers.add(tetragonObserver);
+        notifyTetragonObservers();
+    }
+
+    public void removeTetragonObserver(TetragonObserver tetragonObserver) {
+        observers.remove(tetragonObserver);
+        notifyTetragonObservers();
+    }
+
+    private void notifyTetragonObservers() {
+        observers.forEach(tetragonObserver -> tetragonObserver.update(this));
+    }
+
     public Point getFirst() {
         return first;
     }
 
     public void setFirst(Point first) {
         this.first = first;
+        notifyTetragonObservers();
     }
 
     public Point getSecond() {
@@ -42,6 +61,7 @@ public class Tetragon extends AbstractEntity implements Cloneable {
 
     public void setSecond(Point second) {
         this.second = second;
+        notifyTetragonObservers();
     }
 
     public Point getThird() {
@@ -50,6 +70,7 @@ public class Tetragon extends AbstractEntity implements Cloneable {
 
     public void setThird(Point third) {
         this.third = third;
+        notifyTetragonObservers();
     }
 
     public Point getFourth() {
@@ -58,6 +79,17 @@ public class Tetragon extends AbstractEntity implements Cloneable {
 
     public void setFourth(Point fourth) {
         this.fourth = fourth;
+        notifyTetragonObservers();
+    }
+
+    public List<Number> getObserverValues() {
+        List<Number> values = new ArrayList<>();
+        observers.forEach(observer -> values.add(observer.getValue()));
+        return values;
+    }
+
+    public void printObservers() {
+        observers.forEach(System.out::println);
     }
 
     @Override
