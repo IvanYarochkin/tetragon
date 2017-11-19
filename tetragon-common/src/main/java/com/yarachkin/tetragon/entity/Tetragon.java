@@ -1,5 +1,8 @@
 package com.yarachkin.tetragon.entity;
 
+import com.yarachkin.tetragon.observer.TetragonEvent;
+import com.yarachkin.tetragon.observer.TetragonObserver;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +46,7 @@ public class Tetragon extends AbstractEntity implements Cloneable {
     }
 
     private void notifyTetragonObservers() {
-        observers.forEach(tetragonObserver -> tetragonObserver.update(this));
+        observers.forEach(tetragonObserver -> tetragonObserver.update(new TetragonEvent(this)));
     }
 
     public Point getFirst() {
@@ -80,16 +83,6 @@ public class Tetragon extends AbstractEntity implements Cloneable {
     public void setFourth(Point fourth) {
         this.fourth = fourth;
         notifyTetragonObservers();
-    }
-
-    public List<Number> getObserverValues() {
-        List<Number> values = new ArrayList<>();
-        observers.forEach(observer -> values.add(observer.getValue()));
-        return values;
-    }
-
-    public void printObservers() {
-        observers.forEach(System.out::println);
     }
 
     @Override

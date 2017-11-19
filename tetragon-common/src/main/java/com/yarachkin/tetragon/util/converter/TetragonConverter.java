@@ -5,7 +5,7 @@ import com.yarachkin.tetragon.dto.TetragonDto;
 import com.yarachkin.tetragon.entity.AbstractEntity;
 import com.yarachkin.tetragon.entity.Point;
 import com.yarachkin.tetragon.entity.Tetragon;
-import com.yarachkin.tetragon.exception.ModelTetragonException;
+import com.yarachkin.tetragon.exception.CommonTetragonException;
 import com.yarachkin.tetragon.factory.impl.FactoryImpl;
 import com.yarachkin.tetragon.util.IdGenerator;
 import com.yarachkin.tetragon.util.StringUtil;
@@ -39,7 +39,7 @@ public final class TetragonConverter {
             tetragon.setFourth(fourthPoint);
 
             return tetragon;
-        } catch (ModelTetragonException e) {
+        } catch (CommonTetragonException e) {
             throw new UtilTetragonException(e);
         }
     }

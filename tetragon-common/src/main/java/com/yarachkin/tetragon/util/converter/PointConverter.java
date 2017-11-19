@@ -3,7 +3,7 @@ package com.yarachkin.tetragon.util.converter;
 import com.yarachkin.tetragon.dto.PointDto;
 import com.yarachkin.tetragon.entity.AbstractEntity;
 import com.yarachkin.tetragon.entity.Point;
-import com.yarachkin.tetragon.exception.ModelTetragonException;
+import com.yarachkin.tetragon.exception.CommonTetragonException;
 import com.yarachkin.tetragon.factory.impl.FactoryImpl;
 import com.yarachkin.tetragon.util.IdGenerator;
 import com.yarachkin.tetragon.util.exception.UtilTetragonException;
@@ -35,7 +35,7 @@ public final class PointConverter {
             point.setY(y);
 
             return point;
-        } catch (ModelTetragonException e) {
+        } catch (CommonTetragonException e) {
             throw new UtilTetragonException(e);
         }
     }
